@@ -53,3 +53,13 @@ font-size: 15px;
     padding: 5px 10px; 
 
 }
+
+.row-center{
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    text-align: center;
+}
