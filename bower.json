@@ -1,0 +1,22 @@
+{
+  "name": "indev",
+  "description": "tienda de aplicaciones independientes",
+  "main": "index.js",
+  "authors": [
+    "Isaac Quinzada - Joel Gutierrez"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/iquinzada-altkemist/utp_proyecto_store",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^4.1.1",
+    "jquery": "^3.3.1"
+  }
+}
