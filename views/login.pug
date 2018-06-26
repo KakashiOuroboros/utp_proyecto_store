@@ -1,0 +1,76 @@
+html
+	head
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		title InDev | Indie Developers Store
+		link(rel='stylesheet', href='../bower_components/bootstrap/dist/css/bootstrap.min.css')
+		link(rel='stylesheet', href='./vendor/font-awesome-4.7.0/css/font-awesome.min.css')
+		link(rel='stylesheet', href='../public/css/style.css')
+		link(rel='shortcut icon', href='../public/img/Indev logo.png', type='image/x-icon')
+	body.bg-secondary
+		nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+			a.navbar-brand(href='#')
+				span(style='font-style: italic')
+					| In
+					span(style='color:#cc0000') Dev
+				|  Panamá
+		.container-fluid
+			.row.mt-3
+				.col-sm-5.offset-sm-1.bg-white.pb-3.pt-3
+					fieldset.border.border-dark
+						h3 Registrarse
+						h6 ¡Únete y sé parte de nuestra comunidad!
+						.form-group
+							label(for='emailr') Correo Electrónico
+							input#emailr.form-control(type='email', required='', placeholder='Introduzca su correo')
+						.form-group
+							label(for='username') Nombre de Usuario
+							.form-check(style='float: right;')
+								input#developer-check.form-check-input(type='checkbox')
+								label.form-check-label(style='color:#cc0000', for='developer-check', title='Selecciónalo solo si planeas publicar aplicaciones') Soy Desarrollador
+							input#username.form-control(type='text', required='', maxlength='20', placeholder='Introduzca un nombre de usuario')
+						.form-group
+							label(for='password') Contraseña
+							input#password.form-control(type='password', required='', maxlength='32', placeholder='Introduzca una contraseña')
+						.form-group
+							label(for='telefono') Teléfono
+							input#telefono.form-control(type='text', required='', maxlength='20', placeholder='Introduzca un teléfono')
+						button.btn.btn-danger.btn-right(type='submit') Unirse
+						small.text-justify
+							| Al hacer clic en "Unirse", aceptas 
+							a(href='#') Términos de Servicio
+							|  y la 
+							a(href='#') Política de Privacidad
+							| .
+				.col-sm-5.bg-white.pb-3.pt-3
+					fieldset.border.border-dark
+						h3 Iniciar Sesión
+						h6 ¿Ya tienes una cuenta? Inicia sesión más abajo.
+						.form-group
+							label(for='email') Correo Electrónico
+							input#email.form-control(type='email', required='', aria-describedby='email', placeholder='Introduzca su correo')
+						.form-group
+							label(for='pass') Contraseña
+							a(href='#', style='float: right;') ¿Olvidó su contraseña?
+							input#pass.form-control(type='password', required='', placeholder='Introduzca su contraseña', pattern='[A-Za-z]+')
+						button.btn.btn-danger.btn-right(type='submit') Iniciar Sesión
+						small.text-justify
+							| ¿Problemas iniciando sesión? Confirme que su navegador tenga activados los cookies y el javascript.
+						.text-center
+							img(src='../public/img/Indev-logo.jpg', alt='logo', width='60%')
+		script(src='../bower_components/jquery/dist/jquery.min.js')
+		script(src='../bower_components/bootstrap/dist/js/bootstrap.min.js')
+		// Footer
+		footer.bg-dark
+			// Copyright
+			.footer-copyright.py-3.mt-3.text-white.text-center
+				| © 2018 Copyright:
+				strong
+					span(style='font-style: italic')
+						| In
+						span(style='color:#cc0000') Dev
+					|  Panamá | Joel Gutierrez | Isaac Quinzada
+				br
+				strong El espacio con el que siempre soñastes
+			// /.Copyright
+		// /.Footer

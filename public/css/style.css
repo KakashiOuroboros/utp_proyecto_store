@@ -1,0 +1,16 @@
+fieldset{
+    min-width:2;
+    padding:5%;
+    margin:2;
+    border:1;
+    border-radius: 0.25rem;
+    box-shadow: 2px 2px 2px grey;
+}
+
+.btn-right{
+    float: right;
+}
+
+a {
+    color:#cc0000;
+}
