@@ -1,0 +1,15 @@
+extends base
+
+block contenido
+  form.row(style='margin-top:20%;')
+    .col-md-11.offset-md-1
+      .form-group.row
+        label.col-sm-3.col-form-label(for="user") Usuario:
+        .col-md-8
+          input.form-control#user(type='text')
+      .form-group.row
+        label.col-sm-3.col-form-label(for="pass") Contraseña:
+        .col-md-8
+          input.form-control#pass(type='password')
+      .form-group.row
+        button.btn.btn-primary Conectarme
