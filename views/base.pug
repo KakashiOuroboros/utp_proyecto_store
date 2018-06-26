@@ -20,20 +20,20 @@ html(lang='en')
         .col
           ul.account
             p.toppei
-              a(href='') Registrarse
+              a(href='/login') Registrarse
               |                         |
-              a(href='') Iniciar Sesion
+              a(href='/login') Iniciar Sesión
       // HEADER
       .row
-        .col
-          a.imagen(href='#')
-            img(src='/img/Indev logo.png', width='75%')
-        .col-6
-          .search_wrap
-            input.search_tx(type='text', placeholder='¿Que estas buscando?')
+        .col-sm-8.offset-sm-2.text-center
+          a.imagen(href='/')
+              img(src='/img/Indev logo.png', width='25%')
+      .row
+        .col-sm-8.offset-sm-2.text-center
+          .search_wrap.align-bottom
+            input.search_tx(type='text', placeholder='¿Qué estás buscando?')
             button.btnindev(type='submit')
               i.fa.fa-search.text-white
-        .col
           // CARRITO
     br
     // BARRA MENU
@@ -64,17 +64,18 @@ html(lang='en')
     script(src='/jquery/dist/jquery.min.js')
     script(src='/bootstrap/dist/js/bootstrap.min.js')
     // Footer
-    footer.bg-dark
-      // Copyright
-      .footer-copyright.py-3.mt-3.text-white.text-center
-        | © 2018 Copyright:
-        strong
-          span(style='font-style: italic')
-            | In
-            span(style='color:#cc0000') Dev
-          |  Panamá | Joel Gutierrez | Isaac Quinzada
-        br
-        strong El espacio con el que siempre soñastes
+    block piepag
+      footer.bg-dark
+        // Copyright
+        .footer-copyright.py-3.mt-3.text-white.text-center
+          | © 2018 Copyright:
+          strong
+            span(style='font-style: italic')
+              | In
+              span(style='color:#cc0000') Dev
+            |  Panamá | Joel Gutierrez | Isaac Quinzada
+          br
+          strong El espacio con el que siempre soñastes
       // /.Copyright
     // /.Footer
     

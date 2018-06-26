@@ -12,7 +12,13 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 // Routes
 app.get('/', function(req, res){
+	res.render('index');
+});
+app.get('/login', function(req, res){
 	res.render('login');
+});
+app.get('*', function(req, res){
+	res.status(404).render('error404');
 });
 
 
