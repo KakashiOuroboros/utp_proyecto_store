@@ -1,0 +1,74 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(http-equiv='X-UA-Compatible', content='ie=edge')
+    link(rel='stylesheet', href='ventor/css/bootstrap.css')
+    link(rel='stylesheet', href='ventor/css/style.css')
+    title Indev Panamá
+  body
+    // TOP
+    .container
+      .row
+        .col
+          span.top-phone
+            p.toppei Atención al cliente: (507) 6401-2985
+        .col-5
+        .col
+          ul.account
+            p.toppei
+              a(href='') Registrarse
+              |                         |
+              a(href='') Iniciar Sesion
+      // HEADER
+      .row
+        .col
+          a.imagen(href='#')
+            img(src='../Proyecto_Indev/ventor/img/Indev logo.png', width='200px', height='120px')
+        .col-6
+          .search_wrap
+            input.search_tx(type='text', placeholder='¿Que estas buscando?')
+            button.btnindev(type='submit')
+              i.iconindev Q
+        .col
+          // CARRITO
+    br
+    // BARRA MENU
+    .menu
+      .row
+        .col
+        .col-6
+          nav.navbar.navbar-default
+            .container
+              ul.nav.nav-pills
+                a.nav-link.dropdown-toggle(data-toggle='dropdown', href='#', role='button', aria-haspopup='true', aria-expanded='false') CATEGORIAS
+                .dropdown-menu
+                  a.dropdown-item(href='#') EDUCATIVAS
+                  a.dropdown-item(href='#') EMPRESARIALES
+                  a.dropdown-item(href='#') JUEGOS
+                  .dropdown-divider
+                  a.dropdown-item(href='#') SERVICIOS
+                li.nav-item
+                  a.nav-link(href='#') PRODUCTOS
+                li.nav-item
+                  a.nav-link(href='#') DESARROLLADORES
+                li.nav-item
+                  a.nav-link(href='#') CUENTA
+        .col
+    // Footer
+    footer.bg-dark
+      // Copyright
+      .footer-copyright.py-3.mt-3.text-white.text-center
+        | © 2018 Copyright:
+        strong
+          span(style='font-style: italic')
+            | In
+            span(style='color:#cc0000') Dev
+          |  Panamá | Joel Gutierrez | Isaac Quinzada
+        br
+        strong El espacio con el que siempre soñastes
+      // /.Copyright
+    // /.Footer
+    script(src='ventor/jquery/jquery-3.3.1.min.js')
+    script(src='ventor/js/bootstrap.min.js')
