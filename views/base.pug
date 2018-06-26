@@ -4,9 +4,11 @@ html(lang='en')
     meta(charset='UTF-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     meta(http-equiv='X-UA-Compatible', content='ie=edge')
-    link(rel='stylesheet', href='ventor/css/bootstrap.css')
-    link(rel='stylesheet', href='ventor/css/style.css')
-    title Indev Panamá
+    link(rel='stylesheet', href='/bootstrap/dist/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/vendor/font-awesome-4.7.0/css/font-awesome.min.css')
+    link(rel='stylesheet', href='/css/style.css')
+    link(rel='shortcut icon', href='/img/Indev logo.png', type='image/x-icon')
+    title InDev | Indie Developers Store
   body
     // TOP
     .container
@@ -25,12 +27,12 @@ html(lang='en')
       .row
         .col
           a.imagen(href='#')
-            img(src='../Proyecto_Indev/ventor/img/Indev logo.png', width='200px', height='120px')
+            img(src='/img/Indev logo.png', width='75%')
         .col-6
           .search_wrap
             input.search_tx(type='text', placeholder='¿Que estas buscando?')
             button.btnindev(type='submit')
-              i.iconindev Q
+              i.fa.fa-search.text-white
         .col
           // CARRITO
     br
@@ -56,6 +58,11 @@ html(lang='en')
                 li.nav-item
                   a.nav-link(href='#') CUENTA
         .col
+    
+    block contenido
+
+    script(src='/jquery/dist/jquery.min.js')
+    script(src='/bootstrap/dist/js/bootstrap.min.js')
     // Footer
     footer.bg-dark
       // Copyright
@@ -70,5 +77,4 @@ html(lang='en')
         strong El espacio con el que siempre soñastes
       // /.Copyright
     // /.Footer
-    script(src='ventor/jquery/jquery-3.3.1.min.js')
-    script(src='ventor/js/bootstrap.min.js')
+    
