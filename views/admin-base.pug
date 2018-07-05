@@ -4,6 +4,7 @@ html
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1')
     title Administración Indev
+    link(rel='stylesheet', href='/bootstrap/dist/css/bootstrap.min.css')
     link(href='vendor/lumino/css/bootstrap.min.css', rel='stylesheet')
     link(href='vendor/lumino/css/font-awesome.min.css', rel='stylesheet')
     link(href='vendor/lumino/css/datepicker3.css', rel='stylesheet')
@@ -95,7 +96,7 @@ html
         .profile-userpic
           img.img-responsive(src='http://placehold.it/50/30a5ff/fff', alt='')
         .profile-usertitle
-          .profile-usertitle-name Username
+          .profile-usertitle-name #{usuario}
           .profile-usertitle-status
             span.indicator.label-success
             | Online

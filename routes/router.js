@@ -35,8 +35,68 @@ router.post('/login', function(req, res, next){
 		else{
             req.session.username = user.username;
             console.log('logeado como: '+user.username);
-			res.render('index',{usuario:user.username});  }
+			res.redirect('/profile');  }
 	});
+});
+
+router.get('/profile',function(req, res, next){
+	if(!req.session.username){
+		res.redirect('/');
+	}
+	user.findAll(function(error,users){
+		if(error)
+			next(error);
+		else if(!users)
+			users = [];
+		else
+			res.render('users',{usuario:req.session.username, modelo:users});
+	}); 
+});
+
+//INSERTAR
+router.post('/users/insertar', function(req, res, next){
+	user.insert(req.body.email,req.body.username,req.body.password,req.body.tel,req.body.rango, function(error,user){
+		if(error)
+			next(error);
+		else if(user){
+			var err = new Error('username ya existente');
+			err.status = 401;
+			next(err);}
+		else
+			res.redirect('/profile');
+	  });
+});
+
+//ACTUALIZAR
+router.post('/users/actualizar', function(req, res, next){
+    console.log(req.body.email+' aca estoy');
+	user.update(req.body.email,req.body.username,req.body.password,req.body.tel,req.body.rango, function(error,msg){
+		console.log(req.body.username);
+		if(error)
+			next(error);
+		else if(!msg){
+			var err = new Error('Usuario no existe');
+			err.status = 401;
+			next (err);}
+		res.redirect('/profile');
+		
+	  });
+});
+
+//ELIMINAR
+router.post('/users/eliminar', function(req, res, next){
+	user.delete(req.body.username, function(error,msg){
+		if(error)
+			next(error);
+		else if(msg){
+			var err = new Error('username no existe');
+			err.status = 401;
+			next(err);
+		}
+		else{
+			console.log('exito');
+			res.redirect('/profile');}
+	  });
 });
 
 

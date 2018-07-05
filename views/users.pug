@@ -9,6 +9,72 @@ block contenido
                 li.active Usuarios
         .row
             .col-sm-12
+                h2 Lista de los usuarios registrados 
+        .row
+            .col-sm-12
+                 table.table.table-bordered.table-hover.table-responsive
+                    thead.thead-dark
+                        tr
+                            th #
+                            th Email 
+                            th Username 
+                            th Password 
+                            th PassConfirm 
+                            th Tel
+                            th Rango
+                            th
+                            th 
+                        -var number = 0;
+                        each lista in modelo
+                            - number = number +1;
+                            tr
+                                form(action='/users/actualizar', method='POST')
+                                    td #{number}  
+                                    td #{lista.email}
+                                        input#email(type='email' name='email')
+                                    td #{lista.username}
+                                        input#username(type='hidden' name='username' value=lista.username)
+                                    td #{lista.password}
+                                        br
+                                        input#password(type='password' name='password')
+                                    td #{lista.passConfirm}
+                                        br
+                                        input#passConfirm(type='password' name='passConfirm')
+                                    td #{lista.tel}
+                                        input#tel(type='text' name='tel')
+                                    td #{lista.rango}
+                                        select#rango(name="rango")
+                                            option(value="0") Admin
+                                            option(value="1") Developer
+                                            option(value="2") Common
+                                    td 
+                                        input(type='submit',value='Actualizar').btn.btn-success
+                                form(action='/users/eliminar', method='POST')
+                                    input(type='hidden', value=lista.username, name='username')
+                                    td
+                                        input(type='submit',value='Borrar').btn.btn-danger
+                        tr 
+                            form(method='POST', action='/users/insertar')
+                                td Nuevo
+                                td
+                                    input#email(type='email' name='email')
+                                td
+                                    input#username(type='text' name='username') 
+                                td
+                                    input#password(type='password' name='password')
+                                td
+                                    input#passConfirm(type='password' name='passConfirm')
+                                td
+                                    input#tel(type='text' name='tel')
+                                td
+                                    select#rango(name="rango")
+                                        option(value="0") Admin
+                                        option(value="1") Developer
+                                        option(value="2") Common
+                                td(colspan='2' style='text-align:center')
+                                    input.btn.btn-primary(type='submit' value='Insertar') 
+        .row
+            .col-sm-12
                 p.back-link
                     | Lumino Theme by 
                     a(href='https://www.medialoot.com') Medialoot
