@@ -35,7 +35,7 @@ router.post('/login', function(req, res, next){
 		else{
             req.session.username = user.username;
             console.log('logeado como: '+user.username);
-			res.render('index');  }
+			res.render('index',{usuario:user.username});  }
 	});
 });
 
