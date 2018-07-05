@@ -12,6 +12,14 @@ db.users.insertOne({
     tel:'3909090',
     rango:'0' 
 });
+db.createCollection('software');
+db.software.insertOne({
+    codigo:'0001',
+    nombre:'Mercuris',
+    descripcion:'Reproductor de musica', 
+    desarrollador:'Altkemist',
+    estado:'Inactivo'
+});
 // Para conectarse a la base de datos como Admin '$mongo -u altkmist-dev -p' esto les pedira la contrasena
 // 0 es admin, 1 developer, 2 gente comun
 // clave de admin: soyescanor123

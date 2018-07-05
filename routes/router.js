@@ -53,6 +53,7 @@ router.get('/profile',function(req, res, next){
 	}); 
 });
 
+// Usuarios
 //INSERTAR
 router.post('/users/insertar', function(req, res, next){
 	user.insert(req.body.email,req.body.username,req.body.password,req.body.tel,req.body.rango, function(error,user){
@@ -99,6 +100,66 @@ router.post('/users/eliminar', function(req, res, next){
 	  });
 });
 
+
+// Revision
+router.get('/software',function(req, res, next){
+	if(!req.session.username){
+		res.redirect('/');
+	}
+	software.findAll(function(error,users){
+		if(error)
+			next(error);
+		else if(!users)
+			users = [];
+		else
+			res.render('revision',{usuario:req.session.username, modelo:users});
+	}); 
+});
+//INSERTAR
+router.post('/revision/insertar', function(req, res, next){
+	software.insert(req.body.codigo,req.body.nombre,req.body.descripcion,req.body.desarrollador,req.body.estado, function(error,user){
+		if(error)
+			next(error);
+		else if(user){
+			var err = new Error('codigo ya existente');
+			err.status = 401;
+			next(err);}
+		else
+			res.redirect('/software');
+	  });
+});
+
+//ACTUALIZAR
+router.post('/revision/actualizar', function(req, res, next){
+    console.log(req.body.codigo+' aca estoy');
+	software.update(req.body.codigo,req.body.nombre,req.body.descripcion,req.body.desarrollador,req.body.estado, function(error,msg){
+		console.log(req.body.codigo);
+		if(error)
+			next(error);
+		else if(!msg){
+			var err = new Error('Codigo no existe');
+			err.status = 401;
+			next (err);}
+		res.redirect('/software');
+		
+	  });
+});
+
+//ELIMINAR
+router.post('/revision/eliminar', function(req, res, next){
+	spftware.delete(req.body.codigo, function(error,msg){
+		if(error)
+			next(error);
+		else if(msg){
+			var err = new Error('codigo no existe');
+			err.status = 401;
+			next(err);
+		}
+		else{
+			console.log('exito');
+			res.redirect('/software');}
+	  });
+});
 
 
 

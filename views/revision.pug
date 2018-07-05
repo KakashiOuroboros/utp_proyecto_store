@@ -7,6 +7,43 @@ block contenido
                     a(href='#')
                     em.fa.fa-home
                 li.active Revisión de Aplicaciones subidas
+
+        .row
+            .col-sm-12
+                table.table.table-bordered.table-hover.table-responsive
+                    thead.thead-dark
+                        tr
+                            th Codigo
+                            th Nombre
+                            th Descripcion 
+                            th Desarrollador
+                            th Estado
+                            th
+                            th 
+                        -var number = 0;
+                        each lista in modelo
+                            - number = number +1;
+                            tr
+                                form(action='/revision/actualizar', method='POST')
+                                    td #{number} 
+                                    td #{lista.codigo}
+                                        input#codigo(type='hidden' name='codigo' value=lista.codigo) 
+                                    td #{lista.nombre}
+                                        input#nombre(type='text' name='nombre')
+                                    td #{lista.descripcion}
+                                        input#descripcion(type='text' name='descripcion')
+                                    td #{lista.desarrollador}
+                                        input#desarrollador(type='text' name='desarrollador')
+                                    td #{lista.estado}
+                                        select#estado(name="estado")
+                                            option(value="Activo") Activo
+                                            option(value="Inactivo") Inactivo
+                                    td
+                                        input(type='submit',value='Actualizar').btn.btn-success  
+                                form(action='/revision/eliminar', method='POST')
+                                    input(type='hidden', value=lista.codigo, name='codigo')
+                                    td
+                                        input(type='submit',value='Borrar').btn.btn-danger
         .row
             .col-sm-12
                 p.back-link
