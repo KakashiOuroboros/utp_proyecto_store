@@ -1,0 +1,246 @@
+extends admin-base
+block contenido
+    .col-sm-9.col-sm-offset-3.col-lg-10.col-lg-offset-2.main
+      .row
+        ol.breadcrumb
+          li
+            a(href='#')
+              em.fa.fa-home
+          li.active Dashboard
+      // /.row
+      .row
+        .col-lg-12
+          h1.page-header Dashboard
+      // /.row
+      .panel.panel-container
+        .row
+          .col-xs-6.col-md-3.col-lg-3.no-padding
+            .panel.panel-teal.panel-widget.border-right
+              .row.no-padding
+                em.fa.fa-xl.fa-shopping-cart.color-blue
+                .large 120
+                .text-muted New Orders
+          .col-xs-6.col-md-3.col-lg-3.no-padding
+            .panel.panel-blue.panel-widget.border-right
+              .row.no-padding
+                em.fa.fa-xl.fa-comments.color-orange
+                .large 52
+                .text-muted Comments
+          .col-xs-6.col-md-3.col-lg-3.no-padding
+            .panel.panel-orange.panel-widget.border-right
+              .row.no-padding
+                em.fa.fa-xl.fa-users.color-teal
+                .large 24
+                .text-muted New Users
+          .col-xs-6.col-md-3.col-lg-3.no-padding
+            .panel.panel-red.panel-widget
+              .row.no-padding
+                em.fa.fa-xl.fa-search.color-red
+                .large 25.2k
+                .text-muted Page Views
+        // /.row
+      .row
+        .col-md-12
+          .panel.panel-default
+            .panel-heading
+              | Site Traffic Overview
+              ul.pull-right.panel-settings.panel-button-tab-right
+                li.dropdown
+                  a.pull-right.dropdown-toggle(data-toggle='dropdown', href='#')
+                    em.fa.fa-cogs
+                  ul.dropdown-menu.dropdown-menu-right
+                    li
+                      ul.dropdown-settings
+                        li
+                          a(href='#')
+                            em.fa.fa-cog
+                            |  Settings 1
+                        li.divider
+                        li
+                          a(href='#')
+                            em.fa.fa-cog
+                            |  Settings 2
+                        li.divider
+                        li
+                          a(href='#')
+                            em.fa.fa-cog
+                            |  Settings 3
+              span.pull-right.clickable.panel-toggle.panel-button-tab-left
+                em.fa.fa-toggle-up
+            .panel-body
+              .canvas-wrapper
+                canvas#line-chart.main-chart(height='200', width='600')
+      // /.row
+      .row
+        .col-xs-6.col-md-3
+          .panel.panel-default
+            .panel-body.easypiechart-panel
+              h4 New Orders
+              #easypiechart-blue.easypiechart(data-percent='92')
+                span.percent 92%
+        .col-xs-6.col-md-3
+          .panel.panel-default
+            .panel-body.easypiechart-panel
+              h4 Comments
+              #easypiechart-orange.easypiechart(data-percent='65')
+                span.percent 65%
+        .col-xs-6.col-md-3
+          .panel.panel-default
+            .panel-body.easypiechart-panel
+              h4 New Users
+              #easypiechart-teal.easypiechart(data-percent='56')
+                span.percent 56%
+        .col-xs-6.col-md-3
+          .panel.panel-default
+            .panel-body.easypiechart-panel
+              h4 Visitors
+              #easypiechart-red.easypiechart(data-percent='27')
+                span.percent 27%
+      // /.row
+      .row
+        .col-md-6
+          .panel.panel-default
+            .panel-heading
+              | To-do List
+              ul.pull-right.panel-settings.panel-button-tab-right
+                li.dropdown
+                  a.pull-right.dropdown-toggle(data-toggle='dropdown', href='#')
+                    em.fa.fa-cogs
+                  ul.dropdown-menu.dropdown-menu-right
+                    li
+                      ul.dropdown-settings
+                        li
+                          a(href='#')
+                            em.fa.fa-cog
+                            |  Settings 1
+                        li.divider
+                        li
+                          a(href='#')
+                            em.fa.fa-cog
+                            |  Settings 2
+                        li.divider
+                        li
+                          a(href='#')
+                            em.fa.fa-cog
+                            |  Settings 3
+              span.pull-right.clickable.panel-toggle.panel-button-tab-left
+                em.fa.fa-toggle-up
+            .panel-body
+              ul.todo-list
+                li.todo-list-item
+                  .checkbox
+                    input#checkbox-1(type='checkbox')
+                    label(for='checkbox-1') Make coffee
+                  .pull-right.action-buttons
+                    a.trash(href='#')
+                      em.fa.fa-trash
+                li.todo-list-item
+                  .checkbox
+                    input#checkbox-2(type='checkbox')
+                    label(for='checkbox-2') Check emails
+                  .pull-right.action-buttons
+                    a.trash(href='#')
+                      em.fa.fa-trash
+                li.todo-list-item
+                  .checkbox
+                    input#checkbox-3(type='checkbox')
+                    label(for='checkbox-3') Reply to Jane
+                  .pull-right.action-buttons
+                    a.trash(href='#')
+                      em.fa.fa-trash
+                li.todo-list-item
+                  .checkbox
+                    input#checkbox-4(type='checkbox')
+                    label(for='checkbox-4') Make more coffee
+                  .pull-right.action-buttons
+                    a.trash(href='#')
+                      em.fa.fa-trash
+                li.todo-list-item
+                  .checkbox
+                    input#checkbox-5(type='checkbox')
+                    label(for='checkbox-5') Work on the new design
+                  .pull-right.action-buttons
+                    a.trash(href='#')
+                      em.fa.fa-trash
+                li.todo-list-item
+                  .checkbox
+                    input#checkbox-6(type='checkbox')
+                    label(for='checkbox-6') Get feedback on design
+                  .pull-right.action-buttons
+                    a.trash(href='#')
+                      em.fa.fa-trash
+            .panel-footer
+              .input-group
+                input#btn-input.form-control.input-md(type='text', placeholder='Add new task')
+                span.input-group-btn
+                  button#btn-todo.btn.btn-primary.btn-md Add
+        // /.col
+        .col-md-6
+          .panel.panel-default
+            .panel-heading
+              | Timeline
+              ul.pull-right.panel-settings.panel-button-tab-right
+                li.dropdown
+                  a.pull-right.dropdown-toggle(data-toggle='dropdown', href='#')
+                    em.fa.fa-cogs
+                  ul.dropdown-menu.dropdown-menu-right
+                    li
+                      ul.dropdown-settings
+                        li
+                          a(href='#')
+                            em.fa.fa-cog
+                            |  Settings 1
+                        li.divider
+                        li
+                          a(href='#')
+                            em.fa.fa-cog
+                            |  Settings 2
+                        li.divider
+                        li
+                          a(href='#')
+                            em.fa.fa-cog
+                            |  Settings 3
+              span.pull-right.clickable.panel-toggle.panel-button-tab-left
+                em.fa.fa-toggle-up
+            .panel-body.timeline-container
+              ul.timeline
+                li
+                  .timeline-badge
+                    em.glyphicon.glyphicon-pushpin
+                  .timeline-panel
+                    .timeline-heading
+                      h4.timeline-title Lorem ipsum dolor sit amet
+                    .timeline-body
+                      p
+                        | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at sodales nisl. Donec malesuada orci ornare risus finibus feugiat.
+                li
+                  .timeline-badge.primary
+                    em.glyphicon.glyphicon-link
+                  .timeline-panel
+                    .timeline-heading
+                      h4.timeline-title Lorem ipsum dolor sit amet
+                    .timeline-body
+                      p Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                li
+                  .timeline-badge
+                    em.glyphicon.glyphicon-camera
+                  .timeline-panel
+                    .timeline-heading
+                      h4.timeline-title Lorem ipsum dolor sit amet
+                    .timeline-body
+                      p
+                        | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at sodales nisl. Donec malesuada orci ornare risus finibus feugiat.
+                li
+                  .timeline-badge
+                    em.glyphicon.glyphicon-paperclip
+                  .timeline-panel
+                    .timeline-heading
+                      h4.timeline-title Lorem ipsum dolor sit amet
+                    .timeline-body
+                      p Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        // /.col
+        .col-sm-12
+          p.back-link
+            | Lumino Theme by 
+            a(href='https://www.medialoot.com') Medialoot
+      // /.row

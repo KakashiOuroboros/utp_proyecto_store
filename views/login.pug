@@ -43,21 +43,22 @@ html
 							a(href='#') Política de Privacidad
 							| .
 				.col-sm-5.bg-white.pb-3.pt-3
-					fieldset.border.border-dark
-						h3 Iniciar Sesión
-						h6 ¿Ya tienes una cuenta? Inicia sesión más abajo.
-						.form-group
-							label(for='email') Correo Electrónico
-							input#email.form-control(type='email', required='', aria-describedby='email', placeholder='Introduzca su correo')
-						.form-group
-							label(for='pass') Contraseña
-							a(href='#', style='float: right;') ¿Olvidó su contraseña?
-							input#pass.form-control(type='password', required='', placeholder='Introduzca su contraseña', pattern='[A-Za-z]+')
-						button.btn.btn-danger.btn-right(type='submit') Iniciar Sesión
-						small.text-justify
-							| ¿Problemas iniciando sesión? Confirme que su navegador tenga activados los cookies y el javascript.
-						.text-center
-							img(src='/img/Indev-logo.jpg', alt='logo', width='53%')
+					form(method='post')
+						fieldset.border.border-dark
+							h3 Iniciar Sesión
+							h6 ¿Ya tienes una cuenta? Inicia sesión más abajo.
+							.form-group
+								label(for='email') Correo Electrónico
+								input#email.form-control(type='email',name='email', required='', aria-describedby='email', placeholder='Introduzca su correo')
+							.form-group
+								label(for='pass') Contraseña
+								a(href='#', style='float: right;') ¿Olvidó su contraseña?
+								input#pass.form-control(type='password',name='password', required='', placeholder='Introduzca su contraseña')
+							button.btn.btn-danger.btn-right(type='submit') Iniciar Sesión
+							small.text-justify
+								| ¿Problemas iniciando sesión? Confirme que su navegador tenga activados los cookies y el javascript.
+							.text-center
+								img(src='/img/Indev-logo.jpg', alt='logo', width='53%')
 		script(src='/jquery/dist/jquery.min.js')
 		script(src='/bootstrap/dist/js/bootstrap.min.js')
 		// Footer

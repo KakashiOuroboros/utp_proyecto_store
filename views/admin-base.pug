@@ -1,0 +1,144 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title Administración Indev
+    link(href='vendor/lumino/css/bootstrap.min.css', rel='stylesheet')
+    link(href='vendor/lumino/css/font-awesome.min.css', rel='stylesheet')
+    link(href='vendor/lumino/css/datepicker3.css', rel='stylesheet')
+    link(href='vendor/lumino/css/styles.css', rel='stylesheet')
+    link(rel='shortcut icon', href='/img/Indev logo.png', type='image/x-icon')
+    // Custom Font
+    link(href='https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i', rel='stylesheet')
+    //if lt IE 9
+      script(src='js/html5shiv.js')
+      script(src='js/respond.min.js')
+  body
+    nav.navbar.navbar-custom.navbar-fixed-top(role='navigation')
+      .container-fluid
+        .navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#sidebar-collapse')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='#')
+            span InDev
+            | Admin
+          ul.nav.navbar-top-links.navbar-right
+            li.dropdown
+              a.dropdown-toggle.count-info(data-toggle='dropdown', href='#')
+                em.fa.fa-envelope
+                span.label.label-danger 15
+              ul.dropdown-menu.dropdown-messages
+                li
+                  .dropdown-messages-box
+                    a.pull-left(href='profile.html')
+                      img.img-circle(alt='image', src='http://placehold.it/40/30a5ff/fff')
+                    .message-body
+                      small.pull-right 3 mins ago
+                      a(href='#')
+                        strong John Doe
+                        |  commented on 
+                        strong your photo
+                        | .
+                      br
+                      small.text-muted 1:24 pm - 25/03/2015
+                li.divider
+                li
+                  .dropdown-messages-box
+                    a.pull-left(href='profile.html')
+                      img.img-circle(alt='image', src='http://placehold.it/40/30a5ff/fff')
+                    .message-body
+                      small.pull-right 1 hour ago
+                      a(href='#')
+                        | New message from 
+                        strong Jane Doe
+                        | .
+                      br
+                      small.text-muted 12:27 pm - 25/03/2015
+                li.divider
+                li
+                  .all-button
+                    a(href='#')
+                      em.fa.fa-inbox
+                      strong All Messages
+            li.dropdown
+              a.dropdown-toggle.count-info(data-toggle='dropdown', href='#')
+                em.fa.fa-bell
+                span.label.label-info 5
+              ul.dropdown-menu.dropdown-alerts
+                li
+                  a(href='#')
+                    div
+                      em.fa.fa-envelope
+                      |  1 New Message
+                      span.pull-right.text-muted.small 3 mins ago
+                li.divider
+                li
+                  a(href='#')
+                    div
+                      em.fa.fa-heart
+                      |  12 New Likes
+                      span.pull-right.text-muted.small 4 mins ago
+                li.divider
+                li
+                  a(href='#')
+                    div
+                      em.fa.fa-user
+                      |  5 New Followers
+                      span.pull-right.text-muted.small 4 mins ago
+      // /.container-fluid
+    #sidebar-collapse.col-sm-3.col-lg-2.sidebar
+      .profile-sidebar
+        .profile-userpic
+          img.img-responsive(src='http://placehold.it/50/30a5ff/fff', alt='')
+        .profile-usertitle
+          .profile-usertitle-name Username
+          .profile-usertitle-status
+            span.indicator.label-success
+            | Online
+        .clear
+      .divider
+      form(role='search')
+        .form-group
+          input.form-control(type='text', placeholder='Search')
+      ul.nav.menu
+        li
+          a(href='/admin')
+            em.fa.fa-dashboard  
+            |  Dashboard
+        li
+          a(href='/users')
+            em.fa.fa-users  
+            |  Usuarios
+        li
+          a(href='/revision')
+            em.fa.fa-folder-open  
+            |  Revisión
+        li
+          a(href='/login')
+            em.fa.fa-power-off  
+            |  Logout
+    // /.sidebar
+    block contenido
+    // /.main
+    script(src='vendor/lumino/js/jquery-1.11.1.min.js')
+    script(src='vendor/lumino/js/bootstrap.min.js')
+    script(src='vendor/lumino/js/chart.min.js')
+    script(src='vendor/lumino/js/chart-data.js')
+    script(src='vendor/lumino/js/easypiechart.js')
+    script(src='vendor/lumino/js/easypiechart-data.js')
+    script(src='vendor/lumino/js/bootstrap-datepicker.js')
+    script(src='vendor/lumino/js/custom.js')
+    script.
+      window.onload = function () {
+      var chart1 = document.getElementById("line-chart").getContext("2d");
+      window.myLine = new Chart(chart1).Line(lineChartData, {
+      responsive: true,
+      scaleLineColor: "rgba(0,0,0,.2)",
+      scaleGridLineColor: "rgba(0,0,0,.05)",
+      scaleFontColor: "#c5c7cc"
+      });
+      };

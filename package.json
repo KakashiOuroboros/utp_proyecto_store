@@ -17,8 +17,11 @@
   },
   "homepage": "https://github.com/iquinzada-altkemist/utp_proyecto_store#readme",
   "dependencies": {
+    "bcrypt": "^2.0.1",
     "bower": "^1.8.4",
+    "connect-mongo": "^2.0.1",
     "express": "^4.16.3",
+    "express-session": "^1.15.6",
     "mongoose": "^5.1.6",
     "pug": "^2.0.3"
   }

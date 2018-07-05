@@ -8,61 +8,111 @@ html(lang='en')
     link(rel='stylesheet', href='/vendor/font-awesome-4.7.0/css/font-awesome.min.css')
     link(rel='stylesheet', href='/css/style.css')
     link(rel='shortcut icon', href='/img/Indev logo.png', type='image/x-icon')
-    title InDev | Indie Developers Store
+    title InDev Panamá
   body
     // TOP
-    .container
-      .row
-        .col
-          span.top-phone
-            p.toppei Atención al cliente: (507) 6401-2985
-        .col-5
-        .col
-          ul.account
-            p.toppei
-              a(href='/login') Registrarse
-              |                         |
-              a(href='/login') Iniciar Sesión
+    .container-fluid
+      center
+        .row
+          .col-sm
+            span.top-phone
+              p.toppei Atención al cliente: (507) 6401-2985
+          .col-sm-5
+          .col-sm
+            ul.account
+              p.toppei
+                h6 Bienvenido, #{usuario}!
+                a(href='/login') Registrarse
+                |                         |
+                a(href='/login') Iniciar Sesión
+    .container-fluid
       // HEADER
       .row
-        .col-sm-8.offset-sm-2.text-center
-          a.imagen(href='/')
-              img(src='/img/Indev logo.png', width='25%')
-      .row
-        .col-sm-8.offset-sm-2.text-center
-          .search_wrap.align-bottom
-            input.search_tx(type='text', placeholder='¿Qué estás buscando?')
+        .col-sm.text-center.col-md-4.col-lg-3
+          a(href='/')
+            img(src='/img/Indev logo.png', width='200px', height='120px')
+        .col-sm-6.col-md-4.col-lg-6.d-none.d-md-block.d-lg-block.d-xl-block.position-relative
+          .search_wrap
+            input.search_tx.mt-5(size='5', type='text', placeholder='¿Qué estas buscando?')
             button.btnindev(type='submit')
               i.fa.fa-search.text-white
-          // CARRITO
+        .col-sm.text-center.d-none.d-sm-none.d-md-none.d-lg-none.d-xl-block
+          .imgfb
+            a(href='#')
+              img(src='img/follow.png')
     br
     // BARRA MENU
-    .menu
+    .menu.container-fluid
       .row
         .col
-        .col-6
-          nav.navbar.navbar-default
-            .container
-              ul.nav.nav-pills
-                a.nav-link.dropdown-toggle(data-toggle='dropdown', href='#', role='button', aria-haspopup='true', aria-expanded='false') CATEGORIAS
-                .dropdown-menu
-                  a.dropdown-item(href='#') EDUCATIVAS
-                  a.dropdown-item(href='#') EMPRESARIALES
-                  a.dropdown-item(href='#') JUEGOS
-                  .dropdown-divider
-                  a.dropdown-item(href='#') SERVICIOS
-                li.nav-item
-                  a.nav-link(href='#') PRODUCTOS
-                li.nav-item
-                  a.nav-link(href='#') DESARROLLADORES
-                li.nav-item
-                  a.nav-link(href='#') CUENTA
+        center
+          .col-12.text-white
+            nav.navbar.navbar-expand-lg.navbar-expand-md.navbar-light.text-white
+              button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+                i.fa.fa-bars.text-white(aria-hidden='true')
+              #navbarSupportedContent.collapse.navbar-collapse
+                .my-2.my-lg-0.d-block.d-sm-none.d-md-none.d-lg-none.d-xl-none
+                  input.mr-sm-3(size='20', placeholder='¿Qué estás buscando?', type='text')
+                  button.btn.btn-dark.my-2.my-sm-0(type='submit')
+                    i.fa.fa-search.text-white
+                ul.navbar-nav.mr-auto
+                  a.nav-link.dropdown-toggle.text-white(data-toggle='dropdown', href='#', role='button', aria-haspopup='true', aria-expanded='false') CATEGORIAS
+                  .dropdown-menu
+                    a.dropdown-item(href='#') EDUCATIVAS
+                    a.dropdown-item(href='#') EMPRESARIALES
+                    a.dropdown-item(href='#') JUEGOS
+                    .dropdown-divider
+                    a.dropdown-item(href='#') SERVICIOS
+                  li.nav-item
+                    a.nav-link.text-white(href='/productos') PRODUCTOS
+                  li.nav-item
+                    a.nav-link.text-white(href='#') DESARROLLADORES
+                  li.nav-item
+                    a.nav-link.text-white(href='#') EDITOR
+                  li.nav-item
+                    a.nav-link.text-white(href='#') CUENTA
         .col
     
+    //Cuerpo
     block contenido
-
-    script(src='/jquery/dist/jquery.min.js')
-    script(src='/bootstrap/dist/js/bootstrap.min.js')
+    
+    hr
+    .container-fluid
+      .row
+        .col-sm-3
+          h5.info CONTACTO
+          i.fa.fa-user(aria-hidden='true', style='color: #C51D06')   
+          | Joel Gutiérrez, Isaac Quinzada 
+          br
+          i.fa.fa-phone(aria-hidden='true', style='color: #C51D06')   
+          | (507) 6401-2985, 6250-8185 
+          br
+          i.fa.fa-envelope-open(aria-hidden='true', style='color: #C51D06')   
+          | indevpty@gmail.com 
+          br
+          i.fa.fa-building(aria-hidden='true', style='color: #C51D06')   
+          | Independent Software 
+          br
+          |      Developers Panamá Inc.
+        .col-sm-3
+          h5.info INFORMACIÓN
+          a(href='') Términos y Condiciones
+          br
+          a(href='') Quiénes somos
+          br
+          a(href='') Condiciones de licencias
+        .col-sm-3
+          h5.info SERVICIO AL CLIENTE
+          a(href='') Contáctenos
+          br
+          a(href='') Formas de pago
+        .col-sm-3
+          h5.info COMPRA Y DESCARGAS
+          a(href='') Información de compra
+          br
+          a(href='') Información de descargas
+          br
+    br
     // Footer
     block piepag
       footer.bg-dark
@@ -72,10 +122,12 @@ html(lang='en')
           strong
             span(style='font-style: italic')
               | In
-              span(style='color:#cc0000') Dev
-            |  Panamá | Joel Gutierrez | Isaac Quinzada
+              span(style='color:#C51D06') Dev
+            |  Panamá
+          | | Todos los derechos reservados 2018.
           br
           strong El espacio con el que siempre soñastes
-      // /.Copyright
-    // /.Footer
-    
+        // /.Copyright
+      // /.Footer
+    script(src='/jquery/dist/jquery.min.js')
+    script(src='/bootstrap/dist/js/bootstrap.min.js')

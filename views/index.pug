@@ -1,5 +1,6 @@
 extends base.pug
 block contenido
+    // CUERPO
     #sliderimg.carousel.slide(data-ride='carousel')
         .carousel-inner
             .carousel-item.active
@@ -16,29 +17,26 @@ block contenido
             span.sr-only Siguiente
     br
     .container-fluid
-        .row.text-center
-            .col-sm-8.offset-sm-2
+        div
+            center
                 h3 ¡LO MÁS POPULAR!
-        .row
-            .col-sm-8.offset-sm-2
-                table.table.text-center.table-responsive
-                    thead
-                        tr
-                            th(scope='col') APP 1
-                            th(scope='col') APP 2
-                            th(scope='col') APP 3
-                            th(scope='col') APP 4
-                    tbody
-                        tr
-                            td
-                                a(href='#')
-                                    img(src='/img/logoapp.png', width='50%')
-                            td
-                                a(href='#')
-                                    img(src='/img/logoapp.png', width='50%')
-                            td
-                                a(href='#')
-                                    img(src='/img/logoapp.png', width='50%')
-                            td
-                                a(href='#')
-                                    img(src='/img/logoapp.png', width='50%')
+                hr
+        .row-center
+            .col-sm-3
+                h5 Elef Note
+                a(href='#')
+                    img(src='img/logoapp.png', width='100px', height='100px')
+            .col-sm-3
+                h5 Alkemist Animator
+                a(href='#')
+                    img(src='img/logoapp2.png', width='100px', height='100px')
+            .col-sm-3
+                h5 Destiny Search
+                a(href='#')
+                    img(src='img/logoapp3.png', width='100px', height='100px')
+            .col-sm-3
+                h5 Space Invader 3000
+                a(href='#')
+                    img(src='img/logoapp4.jpg', width='100px', height='100px')
+    br
+    br
