@@ -1,5 +1,0 @@
-# ignorar carpeta modulos 
-/node_modules
-/bower_components
-# .logs de node
-*.log

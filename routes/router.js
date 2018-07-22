@@ -56,9 +56,7 @@ router.post('/login', function(req, res, next){
 		else if(!user) {
 			var err = new Error('Usuario o contraseña incorrecta');
             err.status = 401;
-			next(err); 
-			res.render('login', {mensaje2:'Usuario o contraseña incorrecta'})
-			}
+			next(err); }
 		else{
 			req.session.username = user.username;
 			req.session.rango = user.rango;
