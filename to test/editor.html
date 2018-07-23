@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <!-- para copiar -->
+    <div class="container-fluid mt-3">
+        <div class="row">
+            <div class="col-sm-8 offset-sm-2 border border-dark rounded">
+                <h2 class="mt-2">Subir una aplicación:</h2>
+                <form method='post' action='/dev/upload'>
+                        <h6>La aplicación que subas debe respetar nuestros <a href=''>términos y condiciones</a></h6>
+                        <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" name='nombre' required class="form-control" id="nombre" placeholder="Nombre de la aplicación">
+                        </div>
+                        <div class="form-group">
+                            <label for="descripcion">Descripción</label>
+                            <textarea name='descripcion' required class="form-control" id="descripcion" placeholder="Descripción de la aplicación"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="categoria">Categoría</label>
+                            <select id="categoria" name="categoria">
+                                <option>Educativas</option>
+                                <option>Empresariales</option>
+                                <option>Juegos</option>
+                                <option>Servicios</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="precio">Precio</label>
+                            <input type="number" name='precio' required class="form-control" maxlength="20" id="precio" placeholder="Introduzca el precio">
+                        </div>
+                        <div class="form-group">
+                            <label for="precio">Logo</label>
+                            <input type="number" name='precio' required class="form-control" maxlength="20" id="precio" placeholder="Introduzca el precio">
+                        </div>
+                        <div class="form-group">
+                            <label for="precio">Archivo de la App</label>
+                            <input type="number" name='precio' required class="form-control" maxlength="20" id="precio" placeholder="Introduzca el precio">
+                        </div>
+                        <button type="submit" class="btn btn-danger btn-right">Subir App</button>
+                        <small class="text-justify">Al hacer clic en "Subir App", aceptas <a href="#">Términos de Servicio</a> y la <a href="#">Política de Privacidad</a>.</small>
+                </form>
+                <hr>
+                <h2 class="mt-2">Editar una aplicación:</h2>
+                <select id='app' value='Aplicaciones subidas'>
+                    <option>Reproductor de Windows</option>
+                    <option>Paint.net</option>  
+                </select>
+                <hr>
+            </div>
+        </div>
+    </div>
+    <!-- para copiar -->
+
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

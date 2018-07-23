@@ -18,7 +18,13 @@ db.software.insertOne({
     nombre:'Mercuris',
     descripcion:'Reproductor de musica', 
     desarrollador:'Altkemist',
-    estado:'Inactivo'
+    estado:'Inactivo',
+    numDescargas: 0,
+    categoria: 'Juegos',
+    precio: 0.00,
+    logo: '',
+    archivo: ''
+    //db.software.update( {}, {'$set': {numDescargas:0,categoria: 'Juegos', precio:0, logo:'',archivo:''}}, false, true)
 });
 // Para conectarse a la base de datos como Admin '$mongo -u altkmist-dev -p' esto les pedira la contrasena
 // 0 es admin, 1 developer, 2 gente comun
