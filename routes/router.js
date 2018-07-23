@@ -14,6 +14,12 @@ router.get('/login', function(req, res){
 router.get('/productos', function(req, res){
 	res.render('productos',{usuario:req.session.username,rango:req.session.rango});
 });
+router.get('/editor', function(req, res){
+	res.render('editor',{usuario:req.session.username,rango:req.session.rango});
+});
+router.get('/developers', function(req, res){
+	res.render('developers',{usuario:req.session.username,rango:req.session.rango});
+});
 router.get('/admin', function(req, res){
 	if (req.session.rango == 0){
 		console.log("ENTRÓ UN ADMINISTRADOR");
