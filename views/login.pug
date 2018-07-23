@@ -17,33 +17,35 @@ html
 		.container-fluid
 			.row.mt-3
 				.col-sm-5.offset-sm-1.bg-white.pb-3.pt-3
-					fieldset.border.border-dark
-						h3 Registrarse
-						h6 ¡Únete y sé parte de nuestra comunidad!
-						.form-group
-							label(for='emailr') Correo Electrónico
-							input#emailr.form-control(type='email', required='', placeholder='Introduzca su correo')
-						.form-group
-							label(for='username') Nombre de Usuario
-							.form-check(style='float: right;')
-								input#developer-check.form-check-input(type='checkbox')
-								label.form-check-label(style='color:#cc0000', for='developer-check', title='Selecciónalo solo si planeas publicar aplicaciones') Soy Desarrollador
-							input#username.form-control(type='text', required='', maxlength='20', placeholder='Introduzca un nombre de usuario')
-						.form-group
-							label(for='password') Contraseña
-							input#password.form-control(type='password', required='', maxlength='32', placeholder='Introduzca una contraseña')
-						.form-group
-							label(for='telefono') Teléfono
-							input#telefono.form-control(type='text', required='', maxlength='20', placeholder='Introduzca un teléfono')
-						button.btn.btn-danger.btn-right(type='submit') Unirse
-						small.text-justify
-							| Al hacer clic en "Unirse", aceptas 
-							a(href='#') Términos de Servicio
-							|  y la 
-							a(href='#') Política de Privacidad
-							| .
+					form(method='post', action='/users/registrar')
+						fieldset.border.border-dark
+							h3 Registrarse
+							h6 ¡Únete y sé parte de nuestra comunidad!
+							h6(style='color:#cc0000') #{mensaje}
+							.form-group
+								label(for='emailr') Correo Electrónico
+								input#emailr.form-control(type='email', name='email', required='', placeholder='Introduzca su correo')
+							.form-group
+								label(for='username') Nombre de Usuario
+								.form-check(style='float: right;')
+									input#developer-check.form-check-input(type='checkbox', value=1,name='rango')
+									label.form-check-label(style='color:#cc0000', for='developer-check', title='Selecciónalo solo si planeas publicar aplicaciones') Soy Desarrollador
+								input#username.form-control(type='text', name='username', required='', maxlength='20', placeholder='Introduzca un nombre de usuario')
+							.form-group
+								label(for='password') Contraseña
+								input#password.form-control(type='password',  name='password', required='', maxlength='32', placeholder='Introduzca una contraseña')
+							.form-group
+								label(for='telefono') Teléfono
+								input#telefono.form-control(type='text', name='tel', required='', maxlength='20', placeholder='Introduzca un teléfono')
+							button.btn.btn-danger.btn-right(type='submit') Unirse
+							small.text-justify
+								| Al hacer clic en "Unirse", aceptas 
+								a(href='#') Términos de Servicio
+								|  y la 
+								a(href='#') Política de Privacidad
+								| .
 				.col-sm-5.bg-white.pb-3.pt-3
-					form(method='post')
+					form(method='post', action='/login')
 						fieldset.border.border-dark
 							h3 Iniciar Sesión
 							h6 ¿Ya tienes una cuenta? Inicia sesión más abajo.

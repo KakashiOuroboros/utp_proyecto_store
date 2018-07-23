@@ -7,7 +7,7 @@ let software = require('../models/software')
 //LOGIN
 // Routes
 router.get('/', function(req, res){
-	res.render('index');
+	res.render('index',{usuario:req.session.username});
 });
 router.get('/login', function(req, res){
 	res.render('login');
@@ -16,13 +16,37 @@ router.get('/productos', function(req, res){
 	res.render('productos');
 });
 router.get('/admin', function(req, res){
-	res.render('admin');
+	if (req.session.rango == 0){
+		console.log("ENTRÓ UN ADMINISTRADOR");
+		res.render('admin',{usuario:req.session.username}); 
+	}
+	else{
+		console.log('rango: '+user.rango);
+		console.log('logeado como: '+user.username);
+		res.redirect('/');  
+	}
 });
 router.get('/users', function(req, res){
-	res.render('users');
+	if (req.session.rango == 0){
+		console.log("ENTRÓ UN ADMINISTRADOR");
+		res.render('users');
+	}
+	else{
+		console.log('rango: '+user.rango);
+		console.log('logeado como: '+user.username);
+		res.redirect('/');  
+	}
 });
 router.get('/revision', function(req, res){
-	res.render('revision');
+	if (req.session.rango == 0){
+		console.log("ENTRÓ UN ADMINISTRADOR");
+		res.render('revision');
+	}
+	else{
+		console.log('rango: '+user.rango);
+		console.log('logeado como: '+user.username);
+		res.redirect('/');  
+	}
 });
 router.post('/login', function(req, res, next){
 	user.authenticate(req.body.email, req.body.password, function(error,user){
@@ -33,11 +57,28 @@ router.post('/login', function(req, res, next){
             err.status = 401;
 			next(err); }
 		else{
-            req.session.username = user.username;
-            console.log('logeado como: '+user.username);
-			res.redirect('/profile');  }
+			req.session.username = user.username;
+			req.session.rango = user.rango;
+			if (req.session.rango == 0){
+				console.log("ENTRÓ UN ADMINISTRADOR");
+				res.redirect('/profile');  
+			}
+			else{
+				console.log('rango: '+user.rango);
+				console.log('logeado como: '+user.username);
+				res.render('index',{usuario:req.session.username});  
+			}
+		}
 	});
 });
+
+// Logout
+router.get("/logout", function (req, res, next) {
+	if(req.session){
+		 req.session.destroy();
+	}
+	res.redirect('/');
+ });
 
 router.get('/profile',function(req, res, next){
 	if(!req.session.username){
@@ -65,6 +106,25 @@ router.post('/users/insertar', function(req, res, next){
 			next(err);}
 		else
 			res.redirect('/profile');
+	  });
+});
+
+router.post('/users/registrar', function(req, res, next){
+	var ran=2;
+	if (req.body.rango==1){
+		ran=1
+	}
+	user.insert(req.body.email,req.body.username,req.body.password,req.body.tel,ran, function(error,user){
+		if(error){
+			next(error);
+			res.render('login',{mensaje:'El correo ya existe'});}
+		else if(user){
+			var err = new Error('username ya existente');
+			err.status = 401;
+			next(err);
+			res.render('login',{mensaje:'El usuario ya existe'});}
+		else
+			res.render('login',{mensaje:'Cuenta registrada satisfactoriamente'});
 	  });
 });
 

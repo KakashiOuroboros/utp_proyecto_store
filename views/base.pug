@@ -21,10 +21,13 @@ html(lang='en')
           .col-sm
             ul.account
               p.toppei
-                h6 Bienvenido, #{usuario}!
-                a(href='/login') Registrarse
-                |                         |
-                a(href='/login') Iniciar Sesión
+                if (usuario==undefined)
+                  a(href='/login') Registrarse
+                  |                         |
+                  a(href='/login') Iniciar Sesión
+                else
+                  h6 Bienvenido, #{usuario}!
+                  a(href='/logout') Cerrar Sesión
     .container-fluid
       // HEADER
       .row

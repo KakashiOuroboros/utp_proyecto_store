@@ -13,7 +13,7 @@ var userSchema = new mongoose.Schema({
 
 
 userSchema.statics.authenticate = function(email,password,callback){
-    User.findOne({email:email},'username password',function(err,user){
+    User.findOne({email:email},'username password rango',function(err,user){
         if(err)
             return callback(err);
         else if(!user)
@@ -45,11 +45,12 @@ userSchema.statics.insert = function(email,username,password,tel,rango,callback)
             return callback(user);
         }
         else{
+            let hash = bcrypt.hashSync(password, 10);
             var data={
                 email:email,
                 username:username,
-                password:password,
-                passConfirm:password,
+                password:hash,
+                passConfirm:hash,
                 tel:tel,
                 rango:rango};
             User.create(data,function(err){
