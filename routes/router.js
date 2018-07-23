@@ -6,13 +6,13 @@ let software = require('../models/software')
 
 // Routes
 router.get('/', function(req, res){
-	res.render('index',{usuario:req.session.username});
+	res.render('index',{usuario:req.session.username,rango:req.session.rango});
 });
 router.get('/login', function(req, res){
 	res.render('login');
 });
 router.get('/productos', function(req, res){
-	res.render('productos',{usuario:req.session.username});
+	res.render('productos',{usuario:req.session.username,rango:req.session.rango});
 });
 router.get('/admin', function(req, res){
 	if (req.session.rango == 0){
@@ -67,7 +67,7 @@ router.post('/login', function(req, res, next){
 			else{
 				console.log('rango: '+user.rango);
 				console.log('logeado como: '+user.username);
-				res.render('index',{usuario:req.session.username});  
+				res.render('index',{usuario:req.session.username,rango:req.session.rango});  
 			}
 		}
 	});
@@ -77,6 +77,7 @@ router.post('/login', function(req, res, next){
 router.get("/logout", function (req, res, next) {
 	if(req.session){
 		 req.session.destroy();
+		 console.log("Adiós...");
 	}
 	res.redirect('/');
  });
@@ -106,7 +107,7 @@ router.get('/account', function(req, res, next){
 		else if(!users)
 			users = [];
 		else
-			res.render('account',{usuario:req.session.username, modelo:users});
+			res.render('account',{usuario:req.session.username, modelo:users,rango:req.session.rango});
 	});
 });
 

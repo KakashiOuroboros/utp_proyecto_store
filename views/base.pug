@@ -70,10 +70,12 @@ html(lang='en')
                     a.nav-link.text-white(href='/productos') PRODUCTOS
                   li.nav-item
                     a.nav-link.text-white(href='#') DESARROLLADORES
-                  li.nav-item
-                    a.nav-link.text-white(href='#') EDITOR
-                  li.nav-item
-                    a.nav-link.text-white(href='/account') CUENTA
+                  if (usuario!=undefined)
+                    if (rango==1)
+                      li.nav-item
+                        a.nav-link.text-white(href='#') EDITOR
+                    li.nav-item
+                      a.nav-link.text-white(href='/account') CUENTA
         .col
     
     //Cuerpo
