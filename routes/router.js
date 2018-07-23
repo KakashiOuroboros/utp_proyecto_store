@@ -4,7 +4,6 @@ let router = express.Router();
 let user = require('../models/user');
 let software = require('../models/software')
 
-//LOGIN
 // Routes
 router.get('/', function(req, res){
 	res.render('index',{usuario:req.session.username});
@@ -13,7 +12,7 @@ router.get('/login', function(req, res){
 	res.render('login');
 });
 router.get('/productos', function(req, res){
-	res.render('productos');
+	res.render('productos',{usuario:req.session.username});
 });
 router.get('/admin', function(req, res){
 	if (req.session.rango == 0){
@@ -48,6 +47,8 @@ router.get('/revision', function(req, res){
 		res.redirect('/');  
 	}
 });
+
+//Login
 router.post('/login', function(req, res, next){
 	user.authenticate(req.body.email, req.body.password, function(error,user){
 		if(error)
@@ -80,6 +81,7 @@ router.get("/logout", function (req, res, next) {
 	res.redirect('/');
  });
 
+ // Carga de usuarios
 router.get('/profile',function(req, res, next){
 	if(!req.session.username){
 		res.redirect('/');
@@ -92,6 +94,20 @@ router.get('/profile',function(req, res, next){
 		else
 			res.render('users',{usuario:req.session.username, modelo:users});
 	}); 
+});
+
+router.get('/account', function(req, res, next){
+	if(!req.session.username){
+		res.redirect('/');
+	}
+	user.findOneUser(req.session.username,function(error,users){
+		if(error)
+			next(error);
+		else if(!users)
+			users = [];
+		else
+			res.render('account',{usuario:req.session.username, modelo:users});
+	});
 });
 
 // Usuarios
@@ -141,6 +157,17 @@ router.post('/users/actualizar', function(req, res, next){
 			next (err);}
 		res.redirect('/profile');
 		
+	  });
+});
+router.post('/users/actualizarPerfil', function(req, res, next){
+	user.updatePerfil(req.body.email,req.session.username,req.body.password,req.body.tel, function(error,msg){
+		if(error)
+			next(error);
+		else if(!msg){
+			var err = new Error('Usuario no existe');
+			err.status = 401;
+			next (err);}
+			res.redirect('/account');
 	  });
 });
 

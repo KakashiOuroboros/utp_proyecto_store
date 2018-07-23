@@ -36,6 +36,16 @@ userSchema.statics.findAll = function(callback){
     })
 }
 
+userSchema.statics.findOneUser = function(username,callback){
+    User.find({username:username},'username email tel',function(err,users) {
+        if(err)
+            return callback(err);
+        else if(!users)
+            return callback();
+        return callback(null,users);
+    })
+}
+
 userSchema.statics.insert = function(email,username,password,tel,rango,callback){
     User.findOne({username:username},'username',function(err,user){
         if(err){
@@ -70,17 +80,47 @@ userSchema.statics.update = function(email,username,password,tel,rango,callback)
             return callback();
         }
         else{
+                let hash = bcrypt.hashSync(password, 10);
                 if(email)
                     user.email = email;
                 if(username)
                     user.username=username;
                 if(password){
-                    user.password = password;
-                    user.passConfirm = password;}               
+                    user.password = hash;
+                    user.passConfirm = hash;}               
                 if(tel)
                     user.tel = tel;
                 if(rango)
                     user.rango = rango;
+                user.save(function(err){
+                    if(err)
+                        return callback(err);
+                    return callback(null,true);
+                });
+            }
+    })   
+}
+
+userSchema.statics.updatePerfil = function(email,username,password,tel,callback){
+    User.findOne({username:username},'email username password passConfirm tel',function(err,user){
+        if(err)
+            return callback(err);
+        else if(!user){
+           
+            console.log(user);
+            return callback();
+        }
+        else{
+                let hash = bcrypt.hashSync(password, 10);
+                if(email)
+                    user.email = email;
+                if(username)
+                    user.username=username;
+                if(password){
+                    user.password = hash;
+                    user.passConfirm = hash;}               
+                if(tel)
+                    user.tel = tel;
                 user.save(function(err){
                     if(err)
                         return callback(err);

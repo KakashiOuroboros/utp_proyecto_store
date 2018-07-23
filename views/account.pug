@@ -1,0 +1,37 @@
+extends base
+block contenido
+    .container-fluid.mt-3
+        .row
+            .col-sm-8.offset-sm-2.border.border-dark.rounded
+                h2.mt-2 Datos del usuario:
+                center
+                    .card(style='width: 14rem;')
+                        img.card-img-top(src='/img/user.jpg')
+                br
+                h4 Usuario: #{usuario}
+                h6 Rellene solo los campos que desea cambiar
+                h6(style='color:#cc0000') #{mensaje}
+                table.table.table-bordered.table-hover.table-responsive-sm
+                    thead.thead-dark
+                        tr
+                            th Email 
+                            th Password 
+                            th Tel
+                            th
+                        each lista in modelo
+                            tr
+                                form(action='/users/actualizarPerfil', method='POST')
+                                    td
+                                        | #{lista.email}
+                                        br
+                                        input#email(type='email', name='email')
+                                    td
+                                        | Cambiar contraseña
+                                        br
+                                        input#password(type='password', name='password')
+                                    td
+                                        | #{lista.tel}
+                                        br
+                                        input#tel(type='text', name='tel')
+                                    td
+                                        input.btn.btn-success(type='submit', value='Actualizar')
