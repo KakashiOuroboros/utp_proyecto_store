@@ -1,0 +1,27 @@
+extends base
+block contenido    
+    // Cuerpo
+    .container
+        br
+        h3 PRODUCTOS / SERVICIOS
+        hr
+        #accordionExample.accordion
+            .card
+                #headingOne.card-header
+                    h5.mb-0
+                        button.btn.btn-link(type='button', data-toggle='collapse', data-target='#collapseOne', aria-expanded='true', aria-controls='collapseOne')
+                            | SERVICIOS 
+                            i.fa.fa-book(aria-hidden='true')
+                #collapseOne.collapse.show(aria-labelledby='headingOne', data-parent='#accordionExample')
+                    .card-body
+                        .row-center
+                            .col-sm-3
+                                h5 Home Support Pty
+                                a(href='#')
+                                    img(src='img/hsplogo.jpg', width='100px', height='100px')
+            .card
+                #headingTwo.card-header
+                    h5.mb-0
+                        button.btn.btn-link.collapsed(type='button', data-toggle='collapse', data-target='#collapseTwo', aria-expanded='false', aria-controls='collapseTwo')
+    br
+    br

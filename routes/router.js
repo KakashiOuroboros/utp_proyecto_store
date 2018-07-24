@@ -14,6 +14,18 @@ router.get('/login', function(req, res){
 router.get('/productos', function(req, res){
 	res.render('productos',{usuario:req.session.username,rango:req.session.rango});
 });
+router.get('/educa', function(req, res){
+	res.render('educa',{usuario:req.session.username,rango:req.session.rango});
+});
+router.get('/empre', function(req, res){
+	res.render('empre',{usuario:req.session.username,rango:req.session.rango});
+});
+router.get('/juegos', function(req, res){
+	res.render('juegos',{usuario:req.session.username,rango:req.session.rango});
+});
+router.get('/servicio', function(req, res){
+	res.render('servicio',{usuario:req.session.username,rango:req.session.rango});
+});
 router.get('/editor', function(req, res){
 	res.render('editor',{usuario:req.session.username,rango:req.session.rango});
 });
