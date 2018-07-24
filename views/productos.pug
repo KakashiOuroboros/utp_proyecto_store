@@ -31,15 +31,16 @@ block contenido
                             .col-sm-12
                                 table.table.table-bordered.table-hover.table-responsive
                                     thead.thead-dark
-                                        each lista in modelo
-                                            tr
-                                                form(action='/productos/mostrar', method='POST')
-                                                    th
-                                                        h5 #{lista.nombre}
-                                                tr 
-                                                    td
-                                                        a(href='#')
-                                                            img(src='img/logoapp2.png', width='100px', height='100px')
+                                        if modelo
+                                            each lista in modelo
+                                                tr
+                                                    form(action='/productos/mostrar', method='POST')
+                                                        th
+                                                            h5 #{lista.nombre}
+                                                    tr 
+                                                        td
+                                                            a(href='#')
+                                                                img(src='img/logoapp2.png', width='100px', height='100px')
             .card
                 #headingThree.card-header
                     h5.mb-0

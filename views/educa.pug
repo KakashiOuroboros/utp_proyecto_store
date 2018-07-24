@@ -15,10 +15,27 @@ block contenido
                 #collapseOne.collapse.show(aria-labelledby='headingOne', data-parent='#accordionExample')
                     .card-body
                         .row-center
-                            .col-sm-3
-                                h5 APP 1
-                                a(href='#')
-                                    img(src='img/logoapp.png', width='100px', height='100px')
+                            table.table.table-bordered.table-hover.table-responsive-sm
+                                thead.thead-dark
+                                    tr
+                                        th Nombre
+                                        th Descripción
+                                        th Precio
+                                        th Logo
+                                        th Archivo
+                                    each lista in modelo
+                                        tr
+                                            td
+                                                | #{lista.nombre}
+                                            td
+                                                | #{lista.descripcion}
+                                            td
+                                                | #{lista.precio}
+                                            td
+                                                img(src=lista.logo.replace('public',''), width='100px')
+                                            td
+                                                a(href=lista.archivo.replace('public',''), download='')
+                                                    button.btn.btn-info Descargar
             .card
                 #headingTwo.card-header
                     h5.mb-0
