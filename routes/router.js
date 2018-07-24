@@ -246,7 +246,7 @@ router.post('/revision/insertar', function(req, res, next){
 var cpUpload = uploading.fields([{ name: 'logo', maxCount: 1 }, { name: 'archivo', maxCount: 1 }])
 router.post('/dev/upload',cpUpload, function(req, res, next){
 	var d = new Date().getTime()
-	var codigo= d.getMilliseconds();
+	var codigo= d;
 	var dev = req.session.username;
 	var status='Inactivo';
 	var numDescargas=0;
@@ -256,6 +256,7 @@ router.post('/dev/upload',cpUpload, function(req, res, next){
 
 	//Obtener archivo
 	var archivo = req.files['archivo'][0].path;
+	console.log(archivo);
 
 	software.insertApp(codigo,req.body.nombre,req.body.descripcion,dev,status,req.body.categoria,req.body.precio,numDescargas,logo,archivo, function(error,user){
 		if(error)

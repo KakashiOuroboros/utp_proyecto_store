@@ -30,13 +30,13 @@ block contenido
                                             option Servicios
                                     .form-group
                                         label(for='precio') Precio
-                                        input#precio.form-control(type='number', name='precio', maxlength='20', placeholder='Introduzca el precio')
+                                        input#precio.form-control(type='number', name='precio',required, maxlength='20', placeholder='Introduzca el precio')
                                     .form-group
                                         label(for='logo') Logo
-                                        input#logo.form-control(type='file', name='logo', accept='image/*', maxlength='20', placeholder='Introduzca el logo')
+                                        input#logo.form-control(type='file', name='logo',required, accept='image/*', maxlength='20', placeholder='Introduzca el logo')
                                     .form-group
                                         label(for='app') Archivo de la App
-                                        input#app.form-control(type='file', name='archivo', maxlength='20', placeholder='Introduzca el app')
+                                        input#app.form-control(type='file', name='archivo',required, maxlength='20', placeholder='Introduzca el app')
                                         br
                                         button.btn.btn-danger(type='submit') Subir App
                                         small.text-justify
