@@ -1,0 +1,33 @@
+extends base
+block contenido
+    .container-fluid.mt-3
+        .row
+            .col-sm-8.offset-sm-2
+                h2.mt-2 Aplicaciones encontradas:
+                br
+                h6 Seleccione la que desea descargar y/o comprar
+                h6(style='color:#cc0000') #{mensaje}
+                table.table.table-bordered.table-hover.table-responsive-sm
+                    thead.thead-dark
+                        tr
+                            th Nombre
+                            th Descripción
+                            th Precio
+                            th Logo
+                            th Archivo
+                            th Paypal
+                        each lista in modelo
+                            tr
+                                td
+                                    | #{lista.nombre}
+                                td
+                                    | #{lista.descripcion}
+                                td
+                                    | #{lista.precio}
+                                td
+                                    img(src=lista.logo.replace('public',''), width='100px')
+                                td
+                                    a(href=lista.archivo.replace('public',''), download='')
+                                        button.btn.btn-info Descargar
+                                td 
+                                    h6 Aquí va botón paypal

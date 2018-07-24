@@ -356,6 +356,39 @@ router.post('/revision/eliminar', function(req, res, next){
 });
 
 
+// Búsqueda
+router.get('/search',function(req,res){
+	software.findAll(function(error,users){
+		if(error)
+			next(error);
+		else if(!users)
+			users = [];
+		else
+			{
+				var count = 0;
+				var arr = [];
+				while (users[count]) {
+					arr.push(users[count].nombre);
+					count++;
+				}
+				console.log(count);
+				console.log(arr);
+				res.send(arr);
+			}
+	}); 
+});
+
+router.post('/search_member',function(req,res){
+	console.log(req.body.fullname);
+	software.findOne(req.body.fullname,function(error,users){
+		if(error)
+			next(error);
+		else if(!users)
+			users = [];
+		else
+			res.render('appdata',{usuario:req.session.username, modelo:users,rango:req.session.rango});
+	});
+});
 
 // Todos los 404
 router.get('*', function(req, res){

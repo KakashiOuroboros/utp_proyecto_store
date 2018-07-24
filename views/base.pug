@@ -34,11 +34,12 @@ html(lang='en')
         .col-sm.text-center.col-md-4.col-lg-3
           a(href='/')
             img(src='/img/Indev logo.png', width='200px', height='120px')
-        .col-sm-6.col-md-4.col-lg-6.d-none.d-md-block.d-lg-block.d-xl-block.position-relative
-          .search_wrap
-            input.search_tx.mt-5(size='5', type='text', placeholder='¿Qué estas buscando?')
-            button.btnindev(type='submit')
-              i.fa.fa-search.text-white
+        .col-sm-6.col-md-8.col-lg-6.d-none.d-md-block.d-lg-block.d-xl-block.position-relative
+          #search.search_wrap.mt-5(style="width:90%")
+            form(id="quicksearch", action='/search_member', method='post')
+              input.search_tx.typeahead(name="fullname", type='text', placeholder='¿Qué estas buscando?')
+              button.btnindev.btn-right(type='submit')
+                i.fa.fa-search.text-white
         .col-sm.text-center.d-none.d-sm-none.d-md-none.d-lg-none.d-xl-block
           .imgfb
             a(href='#')
@@ -136,3 +137,49 @@ html(lang='en')
       // /.Footer
     script(src='/jquery/dist/jquery.min.js')
     script(src='/bootstrap/dist/js/bootstrap.min.js')
+    script(src='/js/typeahead.bundle.js')
+    script(type='text/javascript').
+      var modelo = ['pera'];
+      function showGetResult() 
+      {
+          var result = null;
+          var url = "/search";
+          $.ajax({
+              url: url,
+              type: 'get',
+              async: false,
+              success: function(data) {
+                  result = data;
+              } 
+          });
+          modelo = result;
+      }
+      window.onload = showGetResult();
+      var substringMatcher = function(strs) {
+        return function findMatches(q, cb) {
+        var matches, substringRegex;
+        // an array that will be populated with substring matches
+        matches = [];
+        // regex used to determine if a string contains the substring `q`
+        substrRegex = new RegExp(q, 'i');
+        // iterate through the pool of strings and for any string that
+        // contains the substring `q`, add it to the `matches` array
+        $.each(strs, function(i, str) {
+        if (substrRegex.test(str)) {
+        matches.push(str);
+        }
+        });
+        cb(matches);
+        };
+        };
+        var states = modelo; //Arreglo de software desde mongo
+               
+        $('#search .typeahead').typeahead({
+        hint: true,
+        highlight: true,
+        minLength: 1
+        },
+        {
+        name: 'modelo',
+        source: substringMatcher(states)
+        });
