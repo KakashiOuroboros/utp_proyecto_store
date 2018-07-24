@@ -52,41 +52,38 @@ block contenido
                                 | Editar una aplicación:
                         #collapseThree.collapse(aria-labelledby='headingThree', data-parent='#accordionExample')
                             .card-body
-                                //- .col-sm-9.col-sm-offset-3.col-lg-10.col-lg-offset-2.main
-                                //-     .row
-                                //-         .col-sm-12
-                                //-             table.table.table-bordered.table-hover.table-responsive
-                                //-                 thead.thead-dark
-                                //-                     tr
-                                //-                         th Nombre
-                                //-                         th Descripcion
-                                //-                         th Categoria
-                                //-                         th Precio
-                                //-                         th Logo
-                                //-                         th Archivo
-                                //-                         th
-                                //-                     -var number = 0;
-                                //-                     each lista in modelo
-                                //-                         - number = number +1;
-                                //-                         tr
-                                //-                             form(action='/editar/actualizar', method='POST')
-                                //-                                 td #{lista.nombre}
-                                //-                                     input#nombre(type='text' name='nombre')
-                                //-                                 td #{lista.descripcion}
-                                //-                                     input#descripcion(type='text' name='descripcion')
-                                //-                                 td #{listo.categoria}
-                                //-                                     select#categoria(name='categoria')
-                                //-                                         option Educativas
-                                //-                                         option Empresariales
-                                //-                                         option Juegos
-                                //-                                         option Servicios
-                                //-                                 td #{lista.precio}
-                                //-                                     input#precio(type="text" name='precio')
-                                //-                                 td #{lista.logo}
-                                //-                                     p Logo
-                                //-                                     input#logo.form-control(type='file', name='logo',required, accept='image/*', maxlength='20', placeholder='Introduzca el logo')
-                                //-                                 td #{lista.archivo}
-                                //-                                     p Archivo App
-                                //-                                     input#app.form-control(type='file', name='archivo',required, maxlength='20', placeholder='Introduzca el app')
-                                //-                                 td
-                                //-                                     input(type='submit',value='Actualizar').btn.btn-success  
+                                .row
+                                    .col-sm-12
+                                        table.table.table-bordered.table-hover.table-responsive
+                                            thead.thead-dark
+                                                tr
+                                                    th Nombre
+                                                    th Descripcion
+                                                    th Categoria
+                                                    th Precio
+                                                    th Logo
+                                                    th Archivo
+                                                    th
+                                                each lista in modelo
+                                                    tr
+                                                        form(action='/editor/actualizar', method='POST')
+                                                            td #{lista.nombre}
+                                                                input#nombre(type='text' name='nombre')
+                                                            td #{lista.descripcion}
+                                                                input#descripcion(type='text' name='descripcion')
+                                                            td #{lista.categoria}
+                                                                select#categoria(name='categoria')
+                                                                    option Educativas
+                                                                    option Empresariales
+                                                                    option Juegos
+                                                                    option Servicios
+                                                            td #{lista.precio}
+                                                                input#precio(type="text" name='precio')
+                                                            td #{lista.logo}
+                                                                p Logo
+                                                                input#logo.form-control(type='file', name='logo',required, accept='image/*', maxlength='20', placeholder='Introduzca el logo')
+                                                            td #{lista.archivo}
+                                                                p Archivo App
+                                                                input#app.form-control(type='file', name='archivo',required, maxlength='20', placeholder='Introduzca el app')
+                                                            td
+                                                                input(type='submit',value='Actualizar').btn.btn-success  

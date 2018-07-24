@@ -18,12 +18,19 @@ router.get('/login', function(req, res){
 	res.render('login');
 });
 router.get('/productos', function(req, res){
-	res.render('productos',{usuario:req.session.username,rango:req.session.rango});
+	software.findOneAn('Activo',function(error,users){
+		if(error)
+			next(error);
+		else if(!users)
+			users = [];
+		else
+			res.render('productos',{usuario:req.session.username, modelo:users,rango:req.session.rango});
+	});
 });
 
 // Carga educativas
 router.get('/educa', function(req, res){
-	software.findOneC('Educativas',function(error,users){
+	software.findOneC('Educativas','Activo',function(error,users){
 		if(error)
 			next(error);
 		else if(!users)
@@ -34,16 +41,44 @@ router.get('/educa', function(req, res){
 });
 
 router.get('/empre', function(req, res){
-	res.render('empre',{usuario:req.session.username,rango:req.session.rango});
+	software.findOneC('Empresariales','Activo',function(error,users){
+		if(error)
+			next(error);
+		else if(!users)
+			users = [];
+		else
+			res.render('empre',{usuario:req.session.username, modelo:users,rango:req.session.rango});
+	});
 });
 router.get('/juegos', function(req, res){
-	res.render('juegos',{usuario:req.session.username,rango:req.session.rango});
+	software.findOneC('Juegos','Activo',function(error,users){
+		if(error)
+			next(error);
+		else if(!users)
+			users = [];
+		else
+			res.render('juegos',{usuario:req.session.username, modelo:users,rango:req.session.rango});
+	});
 });
 router.get('/servicio', function(req, res){
-	res.render('servicio',{usuario:req.session.username,rango:req.session.rango});
+	software.findOneC('Servicios','Activo',function(error,users){
+		if(error)
+			next(error);
+		else if(!users)
+			users = [];
+		else
+			res.render('servicio',{usuario:req.session.username, modelo:users,rango:req.session.rango});
+	});
 });
 router.get('/editor', function(req, res){
-	res.render('editor',{usuario:req.session.username,rango:req.session.rango});
+	software.findOnlyD(req.session.username,'Activo',function(error,users){
+		if(error)
+			next(error);
+		else if(!users)
+			users = [];
+		else
+			res.render('editor',{usuario:req.session.username, modelo:users,rango:req.session.rango});
+	});
 });
 router.get('/developers', function(req, res){
 	res.render('developers',{usuario:req.session.username,rango:req.session.rango});
@@ -240,47 +275,34 @@ router.get('/software',function(req, res, next){
 	}); 
 });
 
-// //Listar productos
-//  router.post('/productos/mostrar', function(req, res, next){
-//  	software.mostrarP(req.body.nombre, function(error,msg){
-//  		if(error)
-//  			next(error);
-//  		else if(!msg){
-//  			var err = new Error('Producto no existe');
-//  			err.status = 401;
-//  			next (err);}
-//  		res.redirect('/product');
-//  	  });
-//  });
-
 // //Productos
-// router.get('/product',function(req, res, next){
-// 	if(!req.session.username){
-// 		res.redirect('/');
-// 	}
-// 	software.findOne(function(error,users){
-// 		if(error)
-// 			next(error);
-// 		else if(!users)
-// 			users = [];
-// 		else
-// 			res.render('productos',{usuario:req.session.username, modelo:users});
-// 	}); 
-// });
+ router.get('/product',function(req, res, next){
+ 	if(!req.session.username){
+ 		res.redirect('/');
+ 	}
+ 	software.findOne(function(error,users){
+ 		if(error)
+ 			next(error);
+ 		else if(!users)
+ 			users = [];
+ 		else
+ 			res.render('productos',{usuario:req.session.username, modelo:users});
+ 	}); 
+ });
 
 // //ACTUALIZAR EDITOR
-// router.post('/editor/actualizar', function(req, res, next){
-// 	software.update(req.body.nombre,req.body.descripcion,req.body.categoria,req.body.precio,req.body.logo,req.body.archivo, function(error,msg){
-// 		if(error)
-// 			next(error);
-// 		else if(!msg){
-// 			var err = new Error('Codigo no existe');
-// 			err.status = 401;
-// 			next (err);}
-// 		res.redirect('/product');
+	router.post('/editor/actualizar', function(req, res, next){
+ 	software.updateDe(req.body.nombre,req.body.descripcion,req.body.categoria,req.body.precio,req.body.logo,req.body.archivo, function(error,msg){
+ 		if(error)
+ 			next(error);
+ 		else if(!msg){
+ 			var err = new Error('Codigo no existe');
+ 			err.status = 401;
+ 			next (err);}
+ 		res.redirect('/editor');
 		
-// 	  });
-// });
+ 	  });
+ });
 
 //INSERTAR
 router.post('/revision/insertar', function(req, res, next){

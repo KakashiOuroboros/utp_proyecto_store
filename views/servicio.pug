@@ -15,10 +15,24 @@ block contenido
                 #collapseOne.collapse.show(aria-labelledby='headingOne', data-parent='#accordionExample')
                     .card-body
                         .row-center
-                            .col-sm-3
-                                h5 Home Support Pty
-                                a(href='#')
-                                    img(src='img/hsplogo.jpg', width='100px', height='100px')
+                            table.table.table-bordered.table-hover.table-responsive-sm
+                                thead.thead-dark
+                                    tr
+                                        th Nombre
+                                        th Logo
+                                        th Descripción
+                                        th Precio
+                                    each lista in modelo
+                                        tr
+                                            td
+                                                h4
+                                                    | #{lista.nombre}
+                                            td
+                                                img(src=lista.logo.replace('public',''), width='100px')
+                                            td
+                                                | #{lista.descripcion}
+                                            td
+                                                | #{lista.precio}
             .card
                 #headingTwo.card-header
                     h5.mb-0

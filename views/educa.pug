@@ -19,20 +19,21 @@ block contenido
                                 thead.thead-dark
                                     tr
                                         th Nombre
+                                        th Logo
                                         th Descripción
                                         th Precio
-                                        th Logo
                                         th Archivo
                                     each lista in modelo
                                         tr
                                             td
-                                                | #{lista.nombre}
+                                                h4
+                                                    | #{lista.nombre}
+                                            td
+                                                img(src=lista.logo.replace('public',''), width='100px')
                                             td
                                                 | #{lista.descripcion}
                                             td
                                                 | #{lista.precio}
-                                            td
-                                                img(src=lista.logo.replace('public',''), width='100px')
                                             td
                                                 a(href=lista.archivo.replace('public',''), download='')
                                                     button.btn.btn-info Descargar

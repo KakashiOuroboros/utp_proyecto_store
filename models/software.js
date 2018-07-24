@@ -36,7 +36,7 @@ revisionSchema.statics.findAllSB = function(callback){
 }
 
 revisionSchema.statics.findOneS= function(nombre,callback){
-    Software.find({nombre:nombre},'nombre descripcion logo precio archivo',function(err,users) {
+    Software.find({nombre:nombre},'nombre descripcion categoria logo precio archivo',function(err,users) {
         if(err)
             return callback(err);
         else if(!users)
@@ -45,8 +45,28 @@ revisionSchema.statics.findOneS= function(nombre,callback){
     })
 }
 
-revisionSchema.statics.findOneC= function(categoria,callback){
-    Software.find({categoria:categoria},'nombre descripcion logo precio archivo',function(err,users) {
+revisionSchema.statics.findOnlyD= function(desarrollador,estado,callback){
+    Software.find({desarrollador:desarrollador,estado:estado},'nombre descripcion logo precio archivo',function(err,users) {
+        if(err)
+            return callback(err);
+        else if(!users)
+            return callback();
+        return callback(null,users);
+    })
+}
+
+revisionSchema.statics.findOneC= function(categoria,estado,callback){
+    Software.find({categoria:categoria,estado:estado},'nombre descripcion logo precio archivo',function(err,users) {
+        if(err)
+            return callback(err);
+        else if(!users)
+            return callback();
+        return callback(null,users);
+    })
+}
+
+revisionSchema.statics.findOneAn= function(estado,callback){
+    Software.find({estado:estado},'nombre descripcion logo precio archivo',function(err,users) {
         if(err)
             return callback(err);
         else if(!users)
@@ -155,6 +175,43 @@ revisionSchema.statics.delete = function(codigo,callback){
                     return callback(err);
                 return callback();//Success
             });
+    })   
+}
+
+revisionSchema.statics.updateDe = function(codigo,nombre,descripcion,categoria,desarrollador,estado,precio,logo,archivo,callback){
+    Software.findOne({codigo:codigo},'codigo nombre descripcion categoria desarrollador estado precio logo archivo',function(err,user){
+        if(err)
+            return callback(err);
+        else if(!user){
+           
+            console.log(user);
+            return callback();
+        }
+        else{
+                if(codigo)
+                    user.codigo = codigo;
+                if(nombre)
+                    user.nombre=nombre;
+                if(descripcion){
+                    user.descripcion = descripcion;}
+                if(categoria)
+                    user.categoria = categoria;               
+                if(desarrollador)
+                    user.desarrollador = desarrollador;
+                if(estado)
+                    user.estado = estado;
+                if(precio)
+                    user.precio = precio;
+                if(logo)
+                    user.logo = logo;
+                if(archivo)
+                    user.archivo = archivo;
+                user.save(function(err){
+                    if(err)
+                        return callback(err);
+                    return callback(null,true);
+                });
+            }
     })   
 }
 

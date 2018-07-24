@@ -5,67 +5,28 @@ block contenido
         br
         h3 PRODUCTOS
         hr
-        #accordionExample.accordion
-            .card
-                #headingOne.card-header
-                    h5.mb-0
-                        button.btn.btn-link(type='button', data-toggle='collapse', data-target='#collapseOne', aria-expanded='true', aria-controls='collapseOne')
-                            | EDUCATIVAS 
-                            i.fa.fa-book(aria-hidden='true')
-                #collapseOne.collapse.show(aria-labelledby='headingOne', data-parent='#accordionExample')
-                    .card-body
-                        .row-center
-                            .col-sm-3
-                                h5 APP 1
-                                a(href='#')
-                                    img(src='img/logoapp.png', width='100px', height='100px')
-            .card
-                #headingTwo.card-header
-                    h5.mb-0
-                        button.btn.btn-link.collapsed(type='button', data-toggle='collapse', data-target='#collapseTwo', aria-expanded='false', aria-controls='collapseTwo')
-                            | EMPRESARIALES 
-                            i.fa.fa-suitcase(aria-hidden='true')
-                #collapseTwo.collapse(aria-labelledby='headingTwo', data-parent='#accordionExample')
-                    .card-body
-                        .row
-                            .col-sm-12
-                                table.table.table-bordered.table-hover.table-responsive
-                                    thead.thead-dark
-                                        if modelo
-                                            each lista in modelo
-                                                tr
-                                                    form(action='/productos/mostrar', method='POST')
-                                                        th
-                                                            h5 #{lista.nombre}
-                                                    tr 
-                                                        td
-                                                            a(href='#')
-                                                                img(src='img/logoapp2.png', width='100px', height='100px')
-            .card
-                #headingThree.card-header
-                    h5.mb-0
-                        button.btn.btn-link.collapsed(type='button', data-toggle='collapse', data-target='#collapseThree', aria-expanded='false', aria-controls='collapseThree')
-                            | JUEGOS 
-                            i.fa.fa-gamepad(aria-hidden='true')
-                #collapseThree.collapse(aria-labelledby='headingThree', data-parent='#accordionExample')
-                    .card-body
-                        .row-center
-                            .col-sm-3
-                                h5 APP 4
-                                a(href='#')
-                                    img(src='img/logoapp4.jpg', width='100px', height='100px')
-            .card
-                #headingFour.card-header
-                    h5.mb-0
-                        button.btn.btn-link.collapsed(type='button', data-toggle='collapse', data-target='#collapseFour', aria-expanded='false', aria-controls='collapseFour')
-                            | SERVICIOS 
-                            i.fa.fa-briefcase(aria-hidden='true')
-                #collapseFour.collapse(aria-labelledby='headingFour', data-parent='#accordionExample')
-                    .card-body
-                        .row-center
-                            .col-sm-3
-                                h5 Home Support
-                                a(href='#')
-                                    img(src='img/hsplogo.jpg', width='100px', height='100px')
+        .row-center
+            table.table.table-bordered.table-hover.table-responsive-sm
+                thead.thead-dark
+                    tr
+                        th Nombre
+                        th Logo
+                        th Descripción
+                        th Precio
+                        th Archivo
+                    each lista in modelo
+                        tr
+                            td
+                                h4
+                                    | #{lista.nombre}
+                            td
+                                img(src=lista.logo.replace('public',''), width='100px')
+                            td
+                                | #{lista.descripcion}
+                            td
+                                | #{lista.precio}
+                            td
+                                a(href=lista.archivo.replace('public',''), download='')
+                                    button.btn.btn-info Descargar
     br
     br
