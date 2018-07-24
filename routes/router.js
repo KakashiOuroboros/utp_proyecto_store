@@ -358,7 +358,7 @@ router.post('/revision/eliminar', function(req, res, next){
 
 // Búsqueda
 router.get('/search',function(req,res){
-	software.findAll(function(error,users){
+	software.findAllSB(function(error,users){
 		if(error)
 			next(error);
 		else if(!users)
