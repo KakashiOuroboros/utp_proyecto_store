@@ -68,9 +68,10 @@ block contenido
                                                     tr
                                                         form(action='/editor/actualizar', method='POST')
                                                             td #{lista.nombre}
-                                                                input#nombre(type='text' name='nombre')
+                                                                input#codigo(type='hidden', name='codigo' value=lista.codigo)
+                                                                input#nombre(type='text', name='nombre')
                                                             td #{lista.descripcion}
-                                                                input#descripcion(type='text' name='descripcion')
+                                                                input#descripcion(type='text', name='descripcion')
                                                             td #{lista.categoria}
                                                                 select#categoria(name='categoria')
                                                                     option Educativas
@@ -78,12 +79,12 @@ block contenido
                                                                     option Juegos
                                                                     option Servicios
                                                             td #{lista.precio}
-                                                                input#precio(type="text" name='precio')
+                                                                input#precio(type="text", name='precio')
                                                             td #{lista.logo}
                                                                 p Logo
-                                                                input#logo.form-control(type='file', name='logo',required, accept='image/*', maxlength='20', placeholder='Introduzca el logo')
+                                                                input#logo.form-control(type='file', name='logo', accept='image/*', maxlength='20', placeholder='Introduzca el logo')
                                                             td #{lista.archivo}
                                                                 p Archivo App
-                                                                input#app.form-control(type='file', name='archivo',required, maxlength='20', placeholder='Introduzca el app')
+                                                                input#app.form-control(type='file', name='archivo', maxlength='20', placeholder='Introduzca el app')
                                                             td
                                                                 input(type='submit',value='Actualizar').btn.btn-success  

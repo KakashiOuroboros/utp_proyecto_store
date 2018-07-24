@@ -46,7 +46,7 @@ revisionSchema.statics.findOneS= function(nombre,callback){
 }
 
 revisionSchema.statics.findOnlyD= function(desarrollador,estado,callback){
-    Software.find({desarrollador:desarrollador,estado:estado},'nombre descripcion logo precio archivo',function(err,users) {
+    Software.find({desarrollador:desarrollador,estado:estado},'codigo nombre descripcion logo precio archivo',function(err,users) {
         if(err)
             return callback(err);
         else if(!users)
@@ -178,7 +178,7 @@ revisionSchema.statics.delete = function(codigo,callback){
     })   
 }
 
-revisionSchema.statics.updateDe = function(codigo,nombre,descripcion,categoria,desarrollador,estado,precio,logo,archivo,callback){
+revisionSchema.statics.updateDe = function(codigo,nombre,descripcion,categoria,precio,logo,archivo,callback){
     Software.findOne({codigo:codigo},'codigo nombre descripcion categoria desarrollador estado precio logo archivo',function(err,user){
         if(err)
             return callback(err);
@@ -195,11 +195,7 @@ revisionSchema.statics.updateDe = function(codigo,nombre,descripcion,categoria,d
                 if(descripcion){
                     user.descripcion = descripcion;}
                 if(categoria)
-                    user.categoria = categoria;               
-                if(desarrollador)
-                    user.desarrollador = desarrollador;
-                if(estado)
-                    user.estado = estado;
+                    user.categoria = categoria; 
                 if(precio)
                     user.precio = precio;
                 if(logo)
