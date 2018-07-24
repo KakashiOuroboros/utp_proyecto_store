@@ -35,15 +35,15 @@ revisionSchema.statics.findOne= function(nombre,callback){
     })
 }
 
-revisionSchema.statics.mostrarP= function(nombre,callback){
-    Software.findOne({nombre:nombre},'nombre',function(err,users) {
-        if(err)
-            return callback(err);
-        else if(!users)
-            return callback();
-        return callback(null,users);
-    })
-}
+// revisionSchema.statics.mostrarP= function(nombre,callback){
+//     Software.findOne({nombre:nombre},'nombre',function(err,users) {
+//         if(err)
+//             return callback(err);
+//         else if(!users)
+//             return callback();
+//         return callback(null,users);
+//     })
+// }
 
 revisionSchema.statics.insert = function(codigo,nombre,descripcion,desarrollador,estado,callback){
     Software.findOne({codigo:codigo},'codigo',function(err,user){

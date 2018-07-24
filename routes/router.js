@@ -241,47 +241,47 @@ router.get('/software',function(req, res, next){
 	}); 
 });
 
-//Listar productos
- router.post('/productos/mostrar', function(req, res, next){
- 	software.mostrarP(req.body.nombre, function(error,msg){
- 		if(error)
- 			next(error);
- 		else if(!msg){
- 			var err = new Error('Producto no existe');
- 			err.status = 401;
- 			next (err);}
- 		res.redirect('/product');
- 	  });
- });
+// //Listar productos
+//  router.post('/productos/mostrar', function(req, res, next){
+//  	software.mostrarP(req.body.nombre, function(error,msg){
+//  		if(error)
+//  			next(error);
+//  		else if(!msg){
+//  			var err = new Error('Producto no existe');
+//  			err.status = 401;
+//  			next (err);}
+//  		res.redirect('/product');
+//  	  });
+//  });
 
-//Productos
-router.get('/product',function(req, res, next){
-	if(!req.session.username){
-		res.redirect('/');
-	}
-	software.findOne(function(error,users){
-		if(error)
-			next(error);
-		else if(!users)
-			users = [];
-		else
-			res.render('productos',{usuario:req.session.username, modelo:users});
-	}); 
-});
+// //Productos
+// router.get('/product',function(req, res, next){
+// 	if(!req.session.username){
+// 		res.redirect('/');
+// 	}
+// 	software.findOne(function(error,users){
+// 		if(error)
+// 			next(error);
+// 		else if(!users)
+// 			users = [];
+// 		else
+// 			res.render('productos',{usuario:req.session.username, modelo:users});
+// 	}); 
+// });
 
-//ACTUALIZAR EDITOR
-router.post('/editor/actualizar', function(req, res, next){
-	software.update(req.body.nombre,req.body.descripcion,req.body.categoria,req.body.precio,req.body.logo,req.body.archivo, function(error,msg){
-		if(error)
-			next(error);
-		else if(!msg){
-			var err = new Error('Codigo no existe');
-			err.status = 401;
-			next (err);}
-		res.redirect('/product');
+// //ACTUALIZAR EDITOR
+// router.post('/editor/actualizar', function(req, res, next){
+// 	software.update(req.body.nombre,req.body.descripcion,req.body.categoria,req.body.precio,req.body.logo,req.body.archivo, function(error,msg){
+// 		if(error)
+// 			next(error);
+// 		else if(!msg){
+// 			var err = new Error('Codigo no existe');
+// 			err.status = 401;
+// 			next (err);}
+// 		res.redirect('/product');
 		
-	  });
-});
+// 	  });
+// });
 
 //INSERTAR
 router.post('/revision/insertar', function(req, res, next){
