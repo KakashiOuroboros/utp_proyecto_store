@@ -33,7 +33,17 @@ router.get('/servicio', function(req, res){
 	res.render('servicio',{usuario:req.session.username,rango:req.session.rango});
 });
 router.get('/editor', function(req, res){
-	res.render('editor',{usuario:req.session.username,rango:req.session.rango});
+	if(!req.session.username){
+		res.redirect('/');
+	}
+	software.findOneSoftware(req.session.username,function(error,users){
+		if(error)
+			next(error);
+		else if(!users)
+			users = [];
+		else
+			res.render('editor',{usuario:req.session.username, modelo:users,rango:req.session.rango});
+	});
 });
 router.get('/developers', function(req, res){
 	res.render('developers',{usuario:req.session.username,rango:req.session.rango});
@@ -229,6 +239,49 @@ router.get('/software',function(req, res, next){
 			res.render('revision',{usuario:req.session.username, modelo:users});
 	}); 
 });
+
+//Listar productos
+router.post('/productos/mostrar', function(req, res, next){
+	software.mostrarP(req.body.nombre,req.body.logo, function(error,msg){
+		if(error)
+			next(error);
+		else if(!msg){
+			var err = new Error('Producto no existe');
+			err.status = 401;
+			next (err);}
+			res.redirect('/productos');
+	  });
+});
+
+//EDITAR
+router.get('/product',function(req, res, next){
+	if(!req.session.username){
+		res.redirect('/');
+	}
+	software.findAll(function(error,users){
+		if(error)
+			next(error);
+		else if(!users)
+			users = [];
+		else
+			res.render('editor',{usuario:req.session.username, modelo:users});
+	}); 
+});
+
+//ACTUALIZAR EDITOR
+router.post('/editor/actualizar', function(req, res, next){
+	software.update(req.body.nombre,req.body.descripcion,req.body.categoria,req.body.precio,req.body.logo,req.body.archivo, function(error,msg){
+		if(error)
+			next(error);
+		else if(!msg){
+			var err = new Error('Codigo no existe');
+			err.status = 401;
+			next (err);}
+		res.redirect('/product');
+		
+	  });
+});
+
 //INSERTAR
 router.post('/revision/insertar', function(req, res, next){
 	software.insert(req.body.codigo,req.body.nombre,req.body.descripcion,req.body.desarrollador,req.body.estado, function(error,user){
