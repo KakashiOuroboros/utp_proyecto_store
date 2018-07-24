@@ -390,6 +390,11 @@ router.post('/search_member',function(req,res){
 	});
 });
 
+//Créditos
+router.get('/credits', function(req, res){
+	res.render('credits',{usuario:req.session.username,rango:req.session.rango});
+});
+
 // Todos los 404
 router.get('*', function(req, res){
 	res.status(404).render('error404');
