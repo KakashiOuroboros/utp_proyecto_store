@@ -25,15 +25,15 @@ revisionSchema.statics.findAll = function(callback){
     })
 }
 
-revisionSchema.statics.findAllSB = function(callback){
-    Software.find({estado:'Activo'},function(err,users) {
-        if(err)
-            return callback(err);
-        else if(!users)
-            return callback();
-        return callback(null,users);
-    })
-}
+revisionSchema.statics.findAllSB = function(callback){ 
+    Software.find({estado:'Activo'},function(err,users) { 
+        if(err) 
+            return callback(err); 
+        else if(!users) 
+            return callback(); 
+        return callback(null,users); 
+    }) 
+} 
 
 revisionSchema.statics.findOneS= function(nombre,callback){
     Software.find({nombre:nombre},'nombre descripcion categoria logo precio archivo',function(err,users) {
