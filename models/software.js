@@ -25,6 +25,16 @@ revisionSchema.statics.findAll = function(callback){
     })
 }
 
+revisionSchema.statics.findOne= function(nombre,callback){
+    Software.find({nombre:nombre},'nombre descripcion logo precio archivo',function(err,users) {
+        if(err)
+            return callback(err);
+        else if(!users)
+            return callback();
+        return callback(null,users);
+    })
+}
+
 revisionSchema.statics.insert = function(codigo,nombre,descripcion,desarrollador,estado,callback){
     Software.findOne({codigo:codigo},'codigo',function(err,user){
         if(err){
