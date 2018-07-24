@@ -35,6 +35,16 @@ revisionSchema.statics.findOneS= function(nombre,callback){
     })
 }
 
+revisionSchema.statics.findOneC= function(categoria,callback){
+    Software.find({categoria:categoria},'nombre descripcion logo precio archivo',function(err,users) {
+        if(err)
+            return callback(err);
+        else if(!users)
+            return callback();
+        return callback(null,users);
+    })
+}
+
 revisionSchema.statics.mostrarP= function(nombre,callback){
     Software.findOne({nombre:nombre},'nombre',function(err,users) {
         if(err)
