@@ -27,15 +27,19 @@ block contenido
                             i.fa.fa-suitcase(aria-hidden='true')
                 #collapseTwo.collapse(aria-labelledby='headingTwo', data-parent='#accordionExample')
                     .card-body
-                        .row-center
-                            .col-sm-3
-                                h5 APP 2
-                                a(href='#')
-                                    img(src='img/logoapp2.png', width='100px', height='100px')
-                            .col-sm-3
-                                h5 APP 3
-                                a(href='#')
-                                    img(src='img/logoapp3.png', width='100px', height='100px')
+                        .row
+                            .col-sm-12
+                                table.table.table-bordered.table-hover.table-responsive
+                                    thead.thead-dark
+                                        each lista in modelo
+                                            tr
+                                                form(action='/productos/mostrar', method='POST')
+                                                    th
+                                                        h5 #{lista.nombre}
+                                                tr 
+                                                    td
+                                                        a(href='#')
+                                                            img(src='img/logoapp2.png', width='100px', height='100px')
             .card
                 #headingThree.card-header
                     h5.mb-0

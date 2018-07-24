@@ -33,17 +33,18 @@ router.get('/servicio', function(req, res){
 	res.render('servicio',{usuario:req.session.username,rango:req.session.rango});
 });
 router.get('/editor', function(req, res){
-	if(!req.session.username){
-		res.redirect('/');
-	}
-	software.findOneSoftware(req.session.username,function(error,users){
-		if(error)
-			next(error);
-		else if(!users)
-			users = [];
-		else
-			res.render('editor',{usuario:req.session.username, modelo:users,rango:req.session.rango});
-	});
+	// if(!req.session.username){
+	// 	res.redirect('/');
+	// }
+	// software.findOneSoftware(req.session.username,function(error,users){
+	// 	if(error)
+	// 		next(error);
+	// 	else if(!users)
+	// 		users = [];
+	// 	else
+	// 		res.render('editor',{usuario:req.session.username, modelo:users,rango:req.session.rango});
+	// });
+	res.render('editor',{usuario:req.session.username,rango:req.session.rango});
 });
 router.get('/developers', function(req, res){
 	res.render('developers',{usuario:req.session.username,rango:req.session.rango});
@@ -241,30 +242,30 @@ router.get('/software',function(req, res, next){
 });
 
 //Listar productos
-router.post('/productos/mostrar', function(req, res, next){
-	software.mostrarP(req.body.nombre,req.body.logo, function(error,msg){
-		if(error)
-			next(error);
-		else if(!msg){
-			var err = new Error('Producto no existe');
-			err.status = 401;
-			next (err);}
-			res.redirect('/productos');
-	  });
-});
+ router.post('/productos/mostrar', function(req, res, next){
+ 	software.mostrarP(req.body.nombre, function(error,msg){
+ 		if(error)
+ 			next(error);
+ 		else if(!msg){
+ 			var err = new Error('Producto no existe');
+ 			err.status = 401;
+ 			next (err);}
+ 		res.redirect('/product');
+ 	  });
+ });
 
-//EDITAR
+//Productos
 router.get('/product',function(req, res, next){
 	if(!req.session.username){
 		res.redirect('/');
 	}
-	software.findAll(function(error,users){
+	software.findOne(function(error,users){
 		if(error)
 			next(error);
 		else if(!users)
 			users = [];
 		else
-			res.render('editor',{usuario:req.session.username, modelo:users});
+			res.render('productos',{usuario:req.session.username, modelo:users});
 	}); 
 });
 
