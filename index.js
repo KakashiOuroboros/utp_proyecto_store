@@ -5,6 +5,7 @@ let bodyParser = require('body-parser');
 let session = require('express-session'); 
 let path = require('path');
 let MongoStore = require('connect-mongo')(session);
+var multer = require('multer');
 
 //Mongoose Connection 
 let mongoose = require('mongoose');

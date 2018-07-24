@@ -1,3 +1,57 @@
 extends base
 block contenido
-    h1 Hola mundo
+    .container-fluid.mt-3
+        .row
+            .col-sm-8.offset-sm-2
+                #accordionExample.accordion
+                    .card
+                        #headingTwo.card-header
+                            h5.mb-0
+                            button.btn.btn-link.collapsed(type='button', data-toggle='collapse', data-target='#collapseTwo', aria-expanded='false', aria-controls='collapseTwo')
+                                | Subir una aplicación:
+                        #collapseTwo.collapse(aria-labelledby='headingTwo', data-parent='#accordionExample')
+                            .card-body
+                                form(method='post', action='/dev/upload', enctype="multipart/form-data")
+                                    h6 La aplicación que subas debe respetar nuestros 
+                                        a(href='') términos y condiciones
+                                    .form-group
+                                        label(for='nombre') Nombre
+                                        input#nombre.form-control(type='text', name='nombre', required='', placeholder='Nombre de la aplicación')
+                                    .form-group
+                                        label(for='descripcion') Descripción
+                                        textarea#descripcion.form-control(name='descripcion', required='', placeholder='Descripción de la aplicación')
+                                    .form-group
+                                        label(for='categoria') Categoría:
+                                        br
+                                        select#categoria(name='categoria')
+                                            option Educativas
+                                            option Empresariales
+                                            option Juegos
+                                            option Servicios
+                                    .form-group
+                                        label(for='precio') Precio
+                                        input#precio.form-control(type='number', name='precio', required='', maxlength='20', placeholder='Introduzca el precio')
+                                    .form-group
+                                        label(for='logo') Logo
+                                        input#logo.form-control(type='file', name='logo', accept='image/*', required='', maxlength='20', placeholder='Introduzca el logo')
+                                    .form-group
+                                        label(for='app') Archivo de la App
+                                        input#app.form-control(type='file', name='archivo', required='', maxlength='20', placeholder='Introduzca el app')
+                                        br
+                                        button.btn.btn-danger(type='submit') Subir App
+                                        small.text-justify
+                                            label &nbsp;&nbsp;&nbsp;Al hacer clic en "Subir App", aceptas 
+                                            a(href='#') Términos de Servicio
+                                            |  y la 
+                                            a(href='#') Política de Privacidad
+                                            | .
+                    .card
+                        #headingThree.card-header
+                            h5.mb-0
+                            button.btn.btn-link.collapsed(type='button', data-toggle='collapse', data-target='#collapseThree', aria-expanded='false', aria-controls='collapseThree')
+                                | Editar una aplicación:
+                        #collapseThree.collapse(aria-labelledby='headingThree', data-parent='#accordionExample')
+                            .card-body
+                                select#app(value='Aplicaciones subidas')
+                                    option Reproductor de Windows
+                                    option Paint.net

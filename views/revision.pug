@@ -19,6 +19,7 @@ block contenido
                             th Descripcion 
                             th Desarrollador
                             th Estado
+                            th FilePath
                             th
                             th 
                         -var number = 0;
@@ -39,6 +40,8 @@ block contenido
                                         select#estado(name="estado")
                                             option(value="Activo") Activo
                                             option(value="Inactivo") Inactivo
+                                    td #{lista.archivo}
+                                        input#descripcion(type='text' name='archivo')
                                     td
                                         input(type='submit',value='Actualizar').btn.btn-success  
                                 form(action='/revision/eliminar', method='POST')

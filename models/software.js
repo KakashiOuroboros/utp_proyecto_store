@@ -8,6 +8,11 @@ var revisionSchema = new mongoose.Schema({
     descripcion: { type: String, unique: false, required: true, trim: true },
     desarrollador: { type: String, unique: false, required: true, trim: true },
     estado:{ type: String, unique: false, required: true, trim: true },
+    numDescargas: { type: String, unique: false, required: false, trim: true },
+    categoria: { type: String, unique: false, required: false, trim: true },
+    precio: { type: String, unique: false, required: false, trim: true },
+    logo: { type: String, unique: false, required: false, trim: true },
+    archivo: { type: String, unique: false, required: false, trim: true }
 },{collection:'software'});
 
 revisionSchema.statics.findAll = function(callback){
@@ -35,6 +40,34 @@ revisionSchema.statics.insert = function(codigo,nombre,descripcion,desarrollador
                 descripcion:descripcion,
                 desarrollador:desarrollador,
                 estado:estado};
+            Software.create(data,function(err){
+                if(err)
+                    return callback(err);
+                return callback();
+            })}
+    })   
+}
+revisionSchema.statics.insertApp = function(codigo,nombre,descripcion,dev,status,categoria,precio,numDescargas,logo,archivo,callback){
+    Software.findOne({codigo:codigo},'codigo',function(err,user){
+        if(err){
+            return callback(err)
+        }
+        else if(user){
+            return callback(user);
+        }
+        else{
+            var data={
+                codigo:codigo,
+                nombre:nombre,
+                descripcion:descripcion,
+                desarrollador:dev,
+                estado:status,
+                numDescargas: numDescargas,
+                categoria: categoria,
+                precio: precio,
+                logo: logo,
+                archivo: archivo
+            };
             Software.create(data,function(err){
                 if(err)
                     return callback(err);
@@ -72,12 +105,12 @@ revisionSchema.statics.update = function(codigo,nombre,descripcion,desarrollador
 }
 
 revisionSchema.statics.delete = function(codigo,callback){
-    User.findOne({codigo:codigo},'codigo',function(err,users){
+    Software.findOne({codigo:codigo},'codigo',function(err,users){
         if(err)
             return callback(err);
         else if(!users)
             return callback(null,'codigo no existe');
-        User.deleteOne({codigo:codigo}, function(err){
+        Software.deleteOne({codigo:codigo}, function(err){
                 if(err)
                     return callback(err);
                 return callback();//Success

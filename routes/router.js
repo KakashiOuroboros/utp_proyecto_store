@@ -2,7 +2,13 @@
 let express = require('express');
 let router = express.Router();
 let user = require('../models/user');
-let software = require('../models/software')
+let software = require('../models/software');
+var multer = require('multer');
+
+// Multer
+var uploading = multer({
+	dest: './public/dev/app/',
+});
 
 // Routes
 router.get('/', function(req, res){
@@ -237,6 +243,32 @@ router.post('/revision/insertar', function(req, res, next){
 	  });
 });
 
+var cpUpload = uploading.fields([{ name: 'logo', maxCount: 1 }, { name: 'archivo', maxCount: 1 }])
+router.post('/dev/upload',cpUpload, function(req, res, next){
+	var d = new Date().getTime()
+	var codigo= d.getMilliseconds();
+	var dev = req.session.username;
+	var status='Inactivo';
+	var numDescargas=0;
+
+	//Obtener logo
+	var logo = req.files['logo'][0].path;
+
+	//Obtener archivo
+	var archivo = req.files['archivo'][0].path;
+
+	software.insertApp(codigo,req.body.nombre,req.body.descripcion,dev,status,req.body.categoria,req.body.precio,numDescargas,logo,archivo, function(error,user){
+		if(error)
+			next(error);
+		else if(user){
+			var err = new Error('codigo ya existente');
+			err.status = 401;
+			next(err);}
+		else
+			res.redirect('/editor');
+	  }); 
+});
+
 //ACTUALIZAR
 router.post('/revision/actualizar', function(req, res, next){
     console.log(req.body.codigo+' aca estoy');
@@ -255,7 +287,7 @@ router.post('/revision/actualizar', function(req, res, next){
 
 //ELIMINAR
 router.post('/revision/eliminar', function(req, res, next){
-	spftware.delete(req.body.codigo, function(error,msg){
+	software.delete(req.body.codigo, function(error,msg){
 		if(error)
 			next(error);
 		else if(msg){
