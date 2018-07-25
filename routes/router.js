@@ -293,7 +293,7 @@ router.get('/software',function(req, res, next){
 // //ACTUALIZAR EDITOR
 	router.post('/editor/actualizar', function(req, res, next){
 		console.log(req.body.codigo);
-		software.updateDe(req.body.codigo,req.body.nombre,req.body.descripcion,req.body.categoria,req.body.precio,req.body.logo,req.body.archivo, function(error,msg){
+		software.updateDe(req.body.codigo,req.body.nombre,req.body.descripcion,req.body.precio,req.body.logo,req.body.archivo, function(error,msg){
  		if(error)
  			next(error);
  		else if(!msg){

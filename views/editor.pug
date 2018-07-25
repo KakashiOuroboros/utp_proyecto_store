@@ -59,7 +59,6 @@ block contenido
                                                 tr
                                                     th Nombre
                                                     th Descripcion
-                                                    th Categoria
                                                     th Precio
                                                     th Logo
                                                     th Archivo
@@ -72,12 +71,6 @@ block contenido
                                                                 input#nombre(type='text', name='nombre')
                                                             td #{lista.descripcion}
                                                                 input#descripcion(type='text', name='descripcion')
-                                                            td #{lista.categoria}
-                                                                select#categoria(name='categoria')
-                                                                    option Educativas
-                                                                    option Empresariales
-                                                                    option Juegos
-                                                                    option Servicios
                                                             td #{lista.precio}
                                                                 input#precio(type="text", name='precio')
                                                             td #{lista.logo}

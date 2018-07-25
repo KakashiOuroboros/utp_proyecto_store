@@ -178,8 +178,8 @@ revisionSchema.statics.delete = function(codigo,callback){
     })   
 }
 
-revisionSchema.statics.updateDe = function(codigo,nombre,descripcion,categoria,precio,logo,archivo,callback){
-    Software.findOne({codigo:codigo},'codigo nombre descripcion categoria desarrollador estado precio logo archivo',function(err,user){
+revisionSchema.statics.updateDe = function(codigo,nombre,descripcion,precio,logo,archivo,callback){
+    Software.findOne({codigo:codigo},'codigo nombre descripcion desarrollador estado precio logo archivo',function(err,user){
         if(err)
             return callback(err);
         else if(!user){
@@ -194,8 +194,6 @@ revisionSchema.statics.updateDe = function(codigo,nombre,descripcion,categoria,p
                     user.nombre=nombre;
                 if(descripcion){
                     user.descripcion = descripcion;}
-                if(categoria)
-                    user.categoria = categoria; 
                 if(precio)
                     user.precio = precio;
                 if(logo)
