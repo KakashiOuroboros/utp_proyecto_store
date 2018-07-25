@@ -22,7 +22,6 @@ block contenido
                                         th Logo
                                         th Descripción
                                         th Precio
-                                        th Archivo
                                     each lista in modelo
                                         tr
                                             td
@@ -34,9 +33,6 @@ block contenido
                                                 | #{lista.descripcion}
                                             td
                                                 | #{lista.precio}
-                                            td
-                                                a(href=lista.archivo.replace('public',''), download='')
-                                                    button.btn.btn-info Descargar
             .card
                 #headingTwo.card-header
                     h5.mb-0
