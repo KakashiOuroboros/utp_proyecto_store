@@ -30,4 +30,28 @@ block contenido
                                     a(href=lista.archivo.replace('public',''), download='')
                                         button.btn.btn-info Descargar
                                 td 
-                                    h6 Aquí va botón paypal
+                                    #paypal-button
+    script(src='https://www.paypalobjects.com/api/checkout.js')
+    script.
+        paypal.Button.render({
+        env: 'sandbox',
+        client: {
+        sandbox: 'demo_sandbox_client_id'
+        },
+        payment: function (data, actions) {
+        return actions.payment.create({
+        transactions: [{
+        amount: {
+        total: '0.01',
+        currency: 'USD'
+        }
+        }]
+        });
+        },
+        onAuthorize: function (data, actions) {
+        return actions.payment.execute()
+        .then(function () {
+        window.alert('Thank you for your purchase!');
+        });
+        }
+        }, '#paypal-button');
