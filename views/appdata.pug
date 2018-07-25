@@ -24,11 +24,12 @@ block contenido
                                     | #{lista.descripcion}
                                 td
                                     | #{lista.precio}
+                                    input(type='hidden', id='precioP', value=lista.precio)
                                 td
                                     img(src=lista.logo.replace('public',''), width='100px')
                                 td
                                     a(href=lista.archivo.replace('public',''), download='')
-                                        button.btn.btn-info Descargar
+                                        button.btn.btn-info#descarga(disabled) Descargar
                                 td 
                                     #paypal-button
     script(src='https://www.paypalobjects.com/api/checkout.js')
@@ -36,13 +37,13 @@ block contenido
         paypal.Button.render({
         env: 'sandbox',
         client: {
-        sandbox: 'demo_sandbox_client_id'
+        sandbox: 'ASOsVLKueQhysn7X-rbCYIejjv1ocKMx9XRbrdIuWov9d54hwJkeK42yz8-8hEhTqV4dKUHtvQPIM9K8'
         },
         payment: function (data, actions) {
         return actions.payment.create({
         transactions: [{
         amount: {
-        total: '0.01',
+        total: precioP.value,
         currency: 'USD'
         }
         }]
@@ -51,7 +52,8 @@ block contenido
         onAuthorize: function (data, actions) {
         return actions.payment.execute()
         .then(function () {
-        window.alert('Thank you for your purchase!');
+        window.alert('Muchísimas gracias por su compra');
+        descarga.disabled =false;
         });
         }
         }, '#paypal-button');
